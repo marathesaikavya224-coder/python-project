@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Set Operations - Intersection 🤝</title>
+    <style>
+        @keyframes glow { 0% { text-shadow: 0 0 10px #fff; } 100% { text-shadow: 0 0 30px #a78bfa, 0 0 60px #a78bfa; } }
+        body { background-color: #043952; color: white; font-family: 'Segoe UI', sans-serif; margin: 0; padding: 0 20px 80px 20px; display: flex; flex-direction: column; align-items: center; }
+        
+        /* Header Section */
+        .header-container { display: flex; flex-direction: column; align-items: center; margin-top: 50px; margin-bottom: 40px; }
+        .main-header { font-size: 5rem; animation: glow 1.5s ease-in-out infinite alternate; margin: 0; font-weight: 900; letter-spacing: 5px; text-transform: uppercase; text-align: center; }
+        .symbol-box { font-size: 5rem; margin-top: 10px; filter: drop-shadow(0 0 15px rgba(167, 139, 250, 0.4)); }
+
+        .content-paragraph { max-width: 1150px; margin-bottom: 35px; text-align: justify; line-height: 2; color: #e2e8f0; font-size: 1.25rem; }
+        .section-container { width: 95%; max-width: 1200px; background: rgba(255, 255, 255, 0.05); border: 4px solid #a78bfa; border-radius: 50px; padding: 70px 50px; margin-top: 60px; box-shadow: 0 25px 60px rgba(0,0,0,0.7); text-align: center; backdrop-filter: blur(15px); }
+        .sub-heading { font-size: 4rem; margin-bottom: 50px; color: #a78bfa; font-weight: 800; text-transform: uppercase; }
+        
+        /* Venn Diagram */
+        .venn-wrapper { display: flex; justify-content: center; align-items: center; height: 400px; position: relative; margin-bottom: 20px; }
+        .circle { width: 300px; height: 300px; border-radius: 50%; border: 4px solid white; position: absolute; }
+        .circle.a { transform: translateX(-90px); }
+        .circle.b { transform: translateX(90px); }
+        .intersection-fill { width: 120px; height: 210px; background: #a78bfa; position: absolute; border-radius: 100% / 50%; z-index: 2; box-shadow: 0 0 30px #a78bfa; }
+
+        /* Application Cards - Capsule Style */
+        .grid-container { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; margin-top: 50px; }
+        .app-card { padding: 60px 30px; border-radius: 40px; min-height: 600px; display: flex; flex-direction: column; align-items: center; text-align: center; border: 1px solid rgba(255,255,255,0.1); transition: 0.4s ease; }
+        .app-card:hover { transform: translateY(-20px); border-color: white; box-shadow: 0 30px 60px rgba(0,0,0,0.5); }
+        .app-card h3 { font-size: 2.4rem; margin-bottom: 20px; font-weight: 800; }
+        .app-card .icon { font-size: 3rem; margin-bottom: 20px; }
+        .app-card p { font-size: 1.15rem; line-height: 1.8; color: rgba(255,255,255,0.9); }
+        
+        /* Centered Input Section */
+        .fun-box { border: 6px solid #facc15; background: rgba(250, 204, 21, 0.05); }
+        .input-stack { display: flex; flex-direction: column; align-items: center; gap: 30px; width: 100%; }
+        .input-group { display: flex; flex-direction: column; align-items: center; width: 100%; }
+        .input-group label { font-size: 2.2rem; font-weight: 900; color: #facc15; margin-bottom: 15px; }
+        
+        input { background: #021a26; border: 4px solid #facc15; border-radius: 30px; padding: 25px; color: white; font-size: 1.8rem; width: 600px; text-align: center; outline: none; transition: 0.3s; }
+        input:focus { box-shadow: 0 0 20px #facc15; }
+
+        .calc-btn { background: #facc15; color: #043952; padding: 30px 100px; font-size: 2.5rem; font-weight: 900; border-radius: 100px; cursor: pointer; border: none; transition: 0.3s; margin-top: 20px; }
+        .calc-btn:hover { transform: scale(1.05); box-shadow: 0 0 30px #facc15; }
+
+        .result-panel { margin-top: 50px; padding: 50px; background: #021a26; border: 5px solid #a78bfa; border-radius: 40px; display: none; width: 80%; }
+        .back-capsule { background-color: #ff0000 !important; padding: 20px 60px; border-radius: 100px; text-decoration: none; color: white !important; font-weight: 900; font-size: 1.6rem; margin-top: 100px; border: 3px solid white; display: flex; gap: 20px; }
+    </style>
+</head>
+<body>
+    <div class="header-container">
+        <h1 class="main-header">INTERSECTION</h1>
+        <div class="symbol-box">🤝</div>
+    </div>
+
+    <div class="content-paragraph">
+        The Intersection operator, represented by the symbol ∩, is a fundamental set-theoretic operation that identifies the commonality between two or more distinct collections of data. Mathematically, the intersection of Set A and Set B consists of all elements that are members of both sets simultaneously, effectively filtering out any information that is unique to only one of the participating groups. In the landscape of discrete mathematics, intersection serves as the logical counterpart to the AND operator, requiring that a specific element satisfies every membership condition imposed by the contributing sets before it can be included in the resultant collection. This operation is critical for narrowing down vast datasets into precise, manageable segments by enforcing multiple simultaneous criteria, which is essential for mathematical proofs and complex algorithmic filtering. Beyond simple set membership, the intersection provides a rigorous framework for identifying the overlap in multidimensional spaces, allowing for the isolation of specific data points that define the shared characteristics of otherwise disparate systems. It is the mathematical embodiment of "consensus," where the resulting set represents the refined core of information that survives the strict requirement of universal membership across all sets. In formal logic, the intersection of sets directly corresponds to the conjunction of predicates, providing a visual and structural representation of how multiple logical constraints interact to produce a single, unified outcome. By focusing exclusively on the overlapping interests of distinct groups, the intersection operator enables the creation of highly specialized subsets that are fundamental to the study of probability, topology, and relational algebra. It is the engine of precision in data science, ensuring that only the most relevant and universally verified information is extracted from complex, multi-layered data architectures.
+    </div>
+
+    <div class="content-paragraph">
+        In practical computer science applications, the intersection operation is used to optimize search queries and manage relational databases where data integrity depends on matching multiple primary keys across different tables. It governs the logic of permission-based access control systems, where a user must exist in the intersection of "Authorized Personnel" and "Active Session" groups before they are granted entry into a secure digital environment. From the low-level architecture of network routing where packets must navigate the intersection of available paths, to high-level linguistics where intersection defines the shared vocabulary between distinct languages, this operator is indispensable. In data mining and analytics, intersection logic allows researchers to identify recurring patterns and correlations by isolating events that occur across multiple independent observations or experimental trials. It is the core mechanism behind modern search engine algorithms, which perform multi-set intersections of indexed keywords to provide users with the most accurate and specific results possible. In the field of cybersecurity, intersection is used to cross-reference threat intelligence feeds, identifying malicious IP addresses that appear in the datasets of multiple security providers for faster threat detection. The power of the intersection gate lies in its ability to reduce complexity through rigorous filtering, making it a vital instrument for engineers who must manage the flow of structured information in real-time systems. By requiring an element to be present in every input set, the intersection operator provides a binary certainty that is essential for the reliable execution of automated reasoning and decision-making processes. Ultimately, the intersection gate acts as a precision filter in the digital age, transforming raw, multi-faceted data into structured and reliable information through the simple requirement of shared membership.
+    </div>
+
+    <div class="section-container">
+        <h2 class="sub-heading">Venn Diagram 📊</h2>
+        <div class="venn-wrapper">
+            <div class="circle a"></div>
+            <div class="circle b"></div>
+            <div class="intersection-fill"></div>
+            <span style="z-index:10; font-weight:900; font-size:2.5rem;">A ∩ B</span>
+        </div>
+    </div>
+
+    <div class="section-container">
+        <h2 class="sub-heading">Real World Applications 🌍</h2>
+        <div class="grid-container">
+            <div class="app-card" style="background: linear-gradient(180deg, #065f46, #064e3b);">
+                <h3>Meeting Scheduling</h3>
+                <div class="icon">📅</div>
+                <p>Finding a time when both you AND your boss are free uses Intersection. The system scans both calendars, ignores all individual busy or free blocks, and isolates only the specific window where schedules overlap. Without intersection logic, coordinating between multiple people would be a manual nightmare.</p>
+            </div>
+            <div class="app-card" style="background: linear-gradient(180deg, #3730a3, #312e81);">
+                <h3>Crime Forensics</h3>
+                <div class="icon">🔍</div>
+                <p>Detectives use intersection logic to narrow down suspect lists. They might create Set A (people at the crime scene) and Set B (people with a known motive). By finding the intersection of these sets, they filter out thousands of irrelevant individuals to focus only on those who meet both critical criteria.</p>
+            </div>
+            <div class="app-card" style="background: linear-gradient(180deg, #92400e, #78350f);">
+                <h3>E-Commerce</h3>
+                <div class="icon">🏷️</div>
+                <p>When you browse an online store and select filters like "Laptops" AND "Under $500" AND "Touchscreen," the database performs a multi-set intersection. It only returns items that exist in all selected categories. This precision allows users to find exactly what they need within catalogs containing millions of products.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="section-container fun-box">
+        <h2 class="sub-heading" style="color: #facc15;">LET'S HAVE FUN 🎮</h2>
+        <div class="input-stack">
+            <div class="input-group">
+                <label>Enter Set A:</label>
+                <input type="text" id="setA" placeholder="e.g. 1, 2, 3">
+            </div>
+            <div class="input-group">
+                <label>Enter Set B:</label>
+                <input type="text" id="setB" placeholder="e.g. 2, 3, 4">
+            </div>
+            <button class="calc-btn" onclick="runIntersection()">⚡ Find Intersection ⚡</button>
+        </div>
+        
+        <div id="resBox" class="result-panel">
+            <h3 style="color:#facc15; font-size: 2.5rem; margin-bottom: 20px;">Result:</h3>
+            <p id="out" style="font-size:4rem; font-weight:900;"></p>
+        </div>
+    </div>
+
+    <a href="/set-operations" class="back-capsule"><span>↩</span> Back to Set Operations</a>
+
+    <script>
+        function runIntersection() {
+            let a = document.getElementById('setA').value.split(',').map(x => x.trim()).filter(x => x);
+            let b = document.getElementById('setB').value.split(',').map(x => x.trim()).filter(x => x);
+            
+            // Perform intersection
+            let inter = a.filter(x => b.includes(x));
+            
+            // Display result
+            let resultText = inter.length > 0 ? `{ ${[...new Set(inter)].join(', ')} }` : "{ Ø } (Empty Set)";
+            document.getElementById('out').innerText = resultText;
+            
+            document.getElementById('resBox').style.display = 'block';
+            document.getElementById('resBox').scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
+    </script>
+</body>
+</html>

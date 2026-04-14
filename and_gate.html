@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AND Gate | Discrete Math Toolkit</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <style>
+        .true-text { color: #4ade80; text-shadow: 0 0 10px #4ade80; font-weight: bold; }
+        .false-text { color: #f87171; text-shadow: 0 0 10px #f87171; font-weight: bold; }
+        .sim-input { width: 100%; padding: 12px; border-radius: 8px; border: 1px solid #38bdf8; background: rgba(0,0,0,0.3); color: white; margin-top: 10px; }
+        table { width: 100%; border-collapse: collapse; background: rgba(30, 41, 59, 0.7); border-radius: 15px; overflow: hidden; }
+        th, td { padding: 15px; border: 1px solid rgba(255,255,255,0.1); text-align: center; }
+        .example-list { list-style: none; padding: 0; }
+        .example-list li { background: rgba(56, 189, 248, 0.1); padding: 12px; margin-bottom: 10px; border-radius: 8px; border-left: 4px solid #38bdf8; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="main-title" style="font-size: 4rem; color: #38bdf8;">The AND Operator (∧)</h1>
+
+        <div class="fade-in">
+            <p class="intro-text">
+                The AND operator, mathematically known as a conjunction, is a binary operation that results in a true value if and only if both of its operands are true. In the landscape of discrete mathematics, the AND gate serves as the fundamental "gatekeeper" of logic, requiring total consensus among inputs before allowing a signal to pass through. If even a single input is false, the entire expression collapses into a false state, making it a powerful tool for enforcing strict conditions within algorithms and mathematical proofs. Beyond simple verification, the AND operator acts as the foundation for complex logical architectures, ensuring that data integrity is maintained by requiring all sub-conditions to be validated simultaneously. It is the mathematical embodiment of the word "necessity," where the presence of a single failure point nullifies the entire logical chain, providing a binary certainty that is essential for computer processing and cryptographic security.
+            </p>
+            <p class="intro-text">
+                In practical terms, the AND operation represents the intersection of sets or the simultaneous occurrence of multiple events. It is the logical equivalent of saying "both conditions must be met" before an action is triggered or a conclusion is drawn. From the hardware level where transistors must all be active to complete a circuit, to high-level programming where multiple security checks must pass before access is granted, the AND operator ensures that complexity is managed through rigorous, multi-layered verification. In database management, the AND clause allows users to filter vast datasets with surgical precision, narrowing results down only to those entries that satisfy every single specified criterion. Ultimately, the AND gate is the engine of logical consistency in the digital age, transforming raw, disconnected data into structured, reliable information through the simple but profound requirement of absolute consensus.
+            </p>
+        </div>
+
+        <div class="grid-layout fade-in" style="grid-template-columns: 1fr 1fr; gap: 40px; margin-top: 50px;">
+            <div>
+                <h2 style="font-size: 2rem; margin-top: 0;">Truth Table 📊</h2>
+                <table>
+                    <thead>
+                        <tr style="color: #38bdf8;">
+                            <th>Input A</th>
+                            <th>Input B</th>
+                            <th>A AND B</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td><span class="true-text">T</span></td><td><span class="true-text">T</span></td><td><span class="true-text">T</span></td></tr>
+                        <tr><td><span class="true-text">T</span></td><td><span class="false-text">F</span></td><td><span class="false-text">F</span></td></tr>
+                        <tr><td><span class="false-text">F</span></td><td><span class="true-text">T</span></td><td><span class="false-text">F</span></td></tr>
+                        <tr><td><span class="false-text">F</span></td><td><span class="false-text">F</span></td><td><span class="false-text">F</span></td></tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div>
+                <h2 style="font-size: 2rem; margin-top: 0;">Real Life Examples 💡</h2>
+                <ul class="example-list">
+                    <li><b>Example 1:</b> "3 is a prime number" <b>AND</b> "5 is an odd number."</li>
+                    <li><b>Example 2:</b> "The sky is blue" <b>AND</b> "The sun is a star."</li>
+                    <li><b>Example 3:</b> "Input is a number" <b>AND</b> "Input is greater than 10."</li>
+                    <li><b>Example 4:</b> "User has a password" <b>AND</b> "User has an OTP."</li>
+                    <li><b>Example 5:</b> "It is raining" <b>AND</b> "I have an umbrella."</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="highlight-box fade-in" style="margin-top: 80px;">
+            <h2 style="margin-top: 0; text-align: center;">Interactive Simulator 🕹️</h2>
+            <div style="text-align: left; max-width: 600px; margin: 0 auto;">
+                <label>Enter Statement A:</label>
+                <input type="text" id="stmtA" class="sim-input" placeholder="e.g., There are 7 days in a week">
+                <div style="height: 20px;"></div>
+                <label>Enter Statement B:</label>
+                <input type="text" id="stmtB" class="sim-input" placeholder="e.g., There are two Mondays in a week">
+                
+                <button onclick="runSimulator()" class="card" style="width: 100%; margin-top: 30px; padding: 15px; color: #38bdf8; border: 2px solid #38bdf8; background: transparent; font-weight: bold; cursor: pointer;">
+                    CHECK LOGIC ⚡
+                </button>
+            </div>
+
+            <div id="resultBox" style="display: none; margin-top: 40px; padding: 30px; background: rgba(0,0,0,0.5); border-radius: 15px; border: 1px solid #38bdf8; text-align: center;">
+                <h3 style="margin: 0 0 10px 0; color: #38bdf8; font-size: 1.8rem;">Result:</h3>
+                <p id="resStatement" style="font-size: 1.4rem; margin: 0; color: white;"></p>
+            </div>
+        </div>
+
+        <div style="text-align: center; margin-top: 50px;">
+            <a href="/truth" class="card" style="text-decoration: none; display: inline-block; padding: 15px 40px; color: #fff; background: #b91c1c; border: none; font-weight: bold;">
+                Back to Truth Table 🔙
+            </a>
+        </div>
+    </div>
+
+    <script>
+        async function runSimulator() {
+            const a = document.getElementById('stmtA').value.trim();
+            const b = document.getElementById('stmtB').value.trim();
+            
+            if(!a || !b) { alert("Please enter both statements!"); return; }
+
+            document.getElementById('resultBox').style.display = 'block';
+            document.getElementById('resStatement').innerText = `"${a}" and "${b}"`;
+        }
+    </script>
+</body>
+</html>

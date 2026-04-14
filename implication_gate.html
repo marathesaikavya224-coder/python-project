@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Implication | Discrete Math Toolkit</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <style>
+        .true-text { color: #4ade80; text-shadow: 0 0 10px #4ade80; font-weight: bold; }
+        .false-text { color: #f87171; text-shadow: 0 0 10px #f87171; font-weight: bold; }
+        .sim-input { width: 100%; padding: 12px; border-radius: 8px; border: 1px solid #2dd4bf; background: rgba(0,0,0,0.3); color: white; margin-top: 10px; }
+        table { width: 100%; border-collapse: collapse; background: rgba(30, 41, 59, 0.7); border-radius: 15px; overflow: hidden; }
+        th, td { padding: 15px; border: 1px solid rgba(255,255,255,0.1); text-align: center; }
+        .example-list { list-style: none; padding: 0; }
+        .example-list li { background: rgba(45, 212, 191, 0.1); padding: 10px; margin-bottom: 8px; border-radius: 8px; border-left: 4px solid #2dd4bf; font-size: 0.95rem; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="main-title" style="font-size: 4rem; color: #2dd4bf;">Implication (→)</h1>
+
+        <div class="fade-in">
+            <p class="intro-text">
+                The Implication operator, often represented as "if p, then q," is a fundamental conditional statement in discrete mathematics that describes a specific relationship between a premise and a conclusion. In logical terms, an implication is considered false only in the specific scenario where the antecedent is true but the consequent is false, creating a unique truth value distribution. This operator serves as the bedrock for mathematical proofs, allowing logicians to construct sequences of reasoning where one truth necessarily leads to another within a formal system. Understanding implication is crucial for computer science applications, particularly in conditional branching where software must decide which path to execute based on specific boolean criteria. It acts as a logical contract, asserting that if a certain condition is satisfied, a specific outcome must follow without exception or variation. Beyond simple coding, implication defines the flow of rigorous argumentation, ensuring that every step of a logical derivation is anchored in a consistent and verifiable framework. It is the mathematical bridge between known facts and inferred conclusions, providing the structural integrity required for complex problem-solving in engineering and theoretical mathematics. The nuanced nature of the "vacuous truth," where an implication is true simply because the premise is false, highlights the deep complexity of this logical tool. Ultimately, the implication gate is a vital instrument for defining causal relationships and enforcing strict logical dependencies across all digital and mathematical disciplines.
+            </p>
+            <p class="intro-text">
+                In practical terms, the implication operation represents the mandatory outcome of a specific condition being met within a logical architecture. It is the logical equivalent of a promise that is only broken if the starting condition occurs but the promised result fails to manifest. From the hardware level where logic gates determine the flow of electricity based on input states, to high-level programming where complex business rules are enforced, the implication operator ensures that systems behave predictably. In database management, conditional constraints allow developers to maintain data integrity by ensuring that certain field values imply the existence of others. It is the mathematical embodiment of causality, where the presence of a premise guarantees the presence of a conclusion, providing the binary certainty required for automated reasoning. In artificial intelligence, implication forms the basis of inference engines, where sets of rules are used to derive new information from existing knowledge bases. Ultimately, the implication gate acts as the structural glue of logical thought, transforming disconnected conditional statements into a cohesive and functional system of rules. Whether in the rigorous environment of a mathematical proof or the dynamic execution of a software algorithm, the implication operator provides the necessary framework for consistent and reliable logic.
+            </p>
+        </div>
+
+        <div class="grid-layout fade-in" style="grid-template-columns: 1fr 1fr; gap: 40px; margin-top: 50px;">
+            <div>
+                <h2>Truth Table 📊</h2>
+                <table>
+                    <tr style="color: #2dd4bf;"><th>A</th><th>B</th><th>A → B</th></tr>
+                    <tr><td>T</td><td>T</td><td><span class="true-text">T</span></td></tr>
+                    <tr><td>T</td><td>F</td><td><span class="false-text">F</span></td></tr>
+                    <tr><td>F</td><td>T</td><td><span class="true-text">T</span></td></tr>
+                    <tr><td>F</td><td>F</td><td><span class="true-text">T</span></td></tr>
+                </table>
+            </div>
+            <div>
+                <h2>Real Life Examples 💡</h2>
+                <ul class="example-list">
+                    <li><b>Example 1:</b> "<b>IF</b> battery is dead, <b>THEN</b> phone is off."</li>
+                    <li><b>Example 2:</b> "<b>IF</b> you press Save, <b>THEN</b> data is stored."</li>
+                    <li><b>Example 3:</b> "<b>IF</b> x is divisible by 4, <b>THEN</b> it's even."</li>
+                    <li><b>Example 4:</b> "<b>IF</b> it rains, <b>THEN</b> the ground gets wet."</li>
+                    <li><b>Example 5:</b> "<b>IF</b> you study, <b>THEN</b> you will pass."</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="highlight-box fade-in" style="margin-top: 50px; text-align: center;">
+            <h2 style="margin:0;">Interactive Simulator 🕹️</h2>
+            <div style="text-align: left; max-width: 600px; margin: 20px auto;">
+                <label>If (Hypothesis):</label><input type="text" id="stmtA" class="sim-input" placeholder="e.g., You study hard">
+                <div style="height: 15px;"></div>
+                <label>Then (Conclusion):</label><input type="text" id="stmtB" class="sim-input" placeholder="e.g., You will pass">
+                <button onclick="runSimulator()" class="card" style="width: 100%; margin-top: 25px; padding: 15px; color: #2dd4bf; border: 2px solid #2dd4bf; background: transparent; font-weight: bold; cursor: pointer;">CHECK LOGIC ⚡</button>
+            </div>
+            
+            <div id="resultBox" style="display: none; margin-top: 40px; padding: 30px; background: rgba(0,0,0,0.5); border-radius: 15px; border: 1px solid #2dd4bf; text-align: center;">
+                <h3 style="margin: 0 0 10px 0; color: #2dd4bf; font-size: 1.8rem;">Result:</h3>
+                <p id="resStatement" style="font-size: 1.4rem; margin: 0; color: white;"></p>
+            </div>
+        </div>
+
+        <div style="text-align: center; margin-top: 40px;"><a href="/truth" class="card" style="text-decoration: none; display: inline-block; padding: 15px 40px; color: #fff; background: #0f766e; border: none; font-weight: bold;">Back to Truth Table 🔙</a></div>
+    </div>
+
+    <script>
+        function runSimulator() {
+            const a = document.getElementById('stmtA').value.trim();
+            const b = document.getElementById('stmtB').value.trim();
+            const box = document.getElementById('resultBox');
+            if(!a || !b) { alert("Please enter both!"); return; }
+            box.style.display = 'block';
+            document.getElementById('resStatement').innerText = `"${a}" → "${b}"`;
+        }
+    </script>
+</body>
+</html>

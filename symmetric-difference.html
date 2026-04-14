@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Set Theory - Symmetric Difference 🔄</title>
+    <style>
+        @keyframes glow { 0% { text-shadow: 0 0 10px #fff; } 100% { text-shadow: 0 0 30px #be185d, 0 0 60px #be185d; } }
+        body { background-color: #043952; color: white; font-family: 'Segoe UI', sans-serif; margin: 0; padding: 0 20px 80px 20px; display: flex; flex-direction: column; align-items: center; }
+        
+        /* Header Section */
+        .header-container { display: flex; flex-direction: column; align-items: center; margin-top: 50px; margin-bottom: 40px; }
+        .main-header { font-size: 5rem; animation: glow 1.5s ease-in-out infinite alternate; margin: 0; font-weight: 900; letter-spacing: 5px; text-transform: uppercase; text-align: center; }
+        .symbol-box { font-size: 5rem; margin-top: 10px; filter: drop-shadow(0 0 15px rgba(190, 24, 93, 0.4)); }
+
+        .content-paragraph { max-width: 1150px; margin-bottom: 35px; text-align: justify; line-height: 2; color: #e2e8f0; font-size: 1.25rem; }
+        .section-container { width: 95%; max-width: 1200px; background: rgba(255, 255, 255, 0.05); border: 4px solid #be185d; border-radius: 50px; padding: 70px 50px; margin-top: 60px; box-shadow: 0 25px 60px rgba(0,0,0,0.7); text-align: center; backdrop-filter: blur(15px); }
+        .sub-heading { font-size: 4rem; margin-bottom: 50px; color: #be185d; font-weight: 800; text-transform: uppercase; }
+        
+        /* Venn Diagram - Outer parts shaded, Middle empty */
+        .venn-wrapper { display: flex; justify-content: center; align-items: center; height: 400px; position: relative; margin-bottom: 20px; }
+        .circle { width: 300px; height: 300px; border-radius: 50%; border: 4px solid white; position: absolute; background: rgba(190, 24, 93, 0.6); }
+        .circle.a { transform: translateX(-90px); }
+        .circle.b { transform: translateX(90px); }
+        .middle-cutout { width: 120px; height: 210px; background: #043952; position: absolute; border-radius: 100% / 50%; z-index: 5; border-left: 4px solid white; border-right: 4px solid white; }
+
+        /* Application Cards - Capsule Style */
+        .grid-container { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; margin-top: 50px; }
+        .app-card { padding: 60px 30px; border-radius: 40px; min-height: 600px; display: flex; flex-direction: column; align-items: center; text-align: center; border: 1px solid rgba(255,255,255,0.1); transition: 0.4s ease; }
+        .app-card:hover { transform: translateY(-20px); border-color: white; box-shadow: 0 30px 60px rgba(0,0,0,0.5); }
+        .app-card h3 { font-size: 2.4rem; margin-bottom: 20px; font-weight: 800; }
+        .app-card .icon { font-size: 3rem; margin-bottom: 20px; }
+        .app-card p { font-size: 1.15rem; line-height: 1.8; color: rgba(255,255,255,0.9); }
+        
+        /* Centered Input Section */
+        .fun-box { border: 6px solid #38bdf8; background: rgba(56, 189, 248, 0.05); }
+        .input-stack { display: flex; flex-direction: column; align-items: center; gap: 30px; width: 100%; }
+        .input-group { display: flex; flex-direction: column; align-items: center; width: 100%; }
+        .input-group label { font-size: 2.2rem; font-weight: 900; color: #38bdf8; margin-bottom: 15px; }
+        
+        input { background: #021a26; border: 4px solid #38bdf8; border-radius: 30px; padding: 25px; color: white; font-size: 1.8rem; width: 600px; text-align: center; outline: none; transition: 0.3s; }
+        input:focus { box-shadow: 0 0 20px #38bdf8; }
+
+        .calc-btn { background: #38bdf8; color: #043952; padding: 30px 100px; font-size: 2.5rem; font-weight: 900; border-radius: 100px; cursor: pointer; border: none; transition: 0.3s; margin-top: 20px; }
+        .calc-btn:hover { transform: scale(1.05); box-shadow: 0 0 30px #38bdf8; }
+
+        .result-panel { margin-top: 50px; padding: 50px; background: #021a26; border: 5px solid #be185d; border-radius: 40px; display: none; width: 80%; }
+        .back-capsule { background-color: #ff0000 !important; padding: 20px 60px; border-radius: 100px; text-decoration: none; color: white !important; font-weight: 900; font-size: 1.6rem; margin-top: 100px; border: 3px solid white; display: flex; gap: 20px; }
+    </style>
+</head>
+<body>
+    <div class="header-container">
+        <h1 class="main-header">SYMMETRIC DIFFERENCE</h1>
+        <div class="symbol-box">🔄</div>
+    </div>
+
+    <div class="content-paragraph">
+        The Symmetric Difference of two sets, commonly denoted by A Δ B or A ⊕ B, is a sophisticated set-theoretic operation that identifies all elements belonging to either Set A or Set B, while explicitly excluding elements that are common to both. Mathematically, it is the union of the two relative complements—(A - B) ∪ (B - A)—making it the logical equivalent of the "Exclusive OR" (XOR) gate in Boolean algebra. In the rigorous landscape of discrete mathematics, the symmetric difference serves as a measure of the "disjointness" or unique composition of two groups, capturing the essence of what differentiates them rather than what unites them. This operation is central to the study of group theory and measure theory, as it defines a metric space where the distance between two sets is determined by the size of their symmetric difference. By effectively discarding the intersection, the symmetric difference allows logicians to isolate the specific innovations or anomalies present in a comparative system without the noise of shared baseline data. It provides a formal framework for analyzing divergent paths in evolutionary biology or contrasting variables in experimental physics, where the focus remains on non-overlapping results. The operation is commutative and associative, forming an abelian group under the power set, which underscores its structural importance in advanced algebraic topology and set-theoretical proofs. Ultimately, the symmetric difference acts as a precision filter that isolates the distinct, non-shared characteristics of any two comparative populations or datasets.
+    </div>
+
+    <div class="content-paragraph">
+        In practical computer science, the symmetric difference operation is the fundamental logic driving high-performance data reconciliation and decentralized synchronization algorithms. It is the primary mechanism used in version control systems like Git and cloud storage platforms to detect "conflicts" and identify specific changes that have occurred on one node but not another, ensuring efficient bandwidth usage by only transmitting unique packets. From the architecture of fault-tolerant systems that utilize XOR-based parity for data recovery, to cryptographic protocols that rely on symmetric difference to generate unique session keys, this operator is a cornerstone of modern digital security. In the field of image processing, it is used for edge detection and motion tracking, where the system identifies pixels that have changed between two consecutive frames while ignoring static background elements. High-level marketing analytics also leverage this logic to identify "cross-platform churn," pinpointing customers who interact with a mobile app but not the desktop site, or vice versa, to better understand user behavior. In cybersecurity, symmetric difference allows for the rapid identification of unauthorized file modifications by comparing a known-good system state against a current scan, highlighting only the discrepancies. The power of this gate lies in its ability to condense vast amounts of comparative data into a single set of actionable differences, making it indispensable for automated system auditing and real-time monitoring. By requiring an element to be unique to its specific source, the symmetric difference operator ensures a level of binary precision essential for the reliability of modern distributed networks and complex algorithmic decision-making.
+    </div>
+
+    <div class="section-container">
+        <h2 class="sub-heading">Venn Diagram 📊</h2>
+        <div class="venn-wrapper">
+            <div class="circle a"></div>
+            <div class="circle b"></div>
+            <div class="middle-cutout"></div>
+            <span style="z-index:10; font-weight:900; font-size:2.5rem;">A Δ B</span>
+        </div>
+    </div>
+
+    <div class="section-container">
+        <h2 class="sub-heading">Real World Applications 🌍</h2>
+        <div class="grid-container">
+            <div class="app-card" style="background: linear-gradient(180deg, #6b21a8, #581c87);">
+                <h3>Data Synchronization</h3>
+                <div class="icon">🔄</div>
+                <p>When you sync your phone with the cloud, the system identifies the Symmetric Difference. It looks for files that exist on your phone but not the cloud, and files on the cloud but not your phone. It ignores the files already present in both places to save time and bandwidth during the update.</p>
+            </div>
+            <div class="app-card" style="background: linear-gradient(180deg, #b91c1c, #991b1b);">
+                <h3>Genetic Diversity</h3>
+                <div class="icon">🧬</div>
+                <p>Geneticists use symmetric difference to identify unique mutations. By comparing the DNA of two individuals, they discard the 99% of genetic material that is identical (the intersection) and focus only on the differences. This helps in identifying specific traits or susceptibility to certain diseases.</p>
+            </div>
+            <div class="app-card" style="background: linear-gradient(180deg, #0369a1, #075985);">
+                <h3>Market Analysis</h3>
+                <div class="icon">📈</div>
+                <p>When comparing two rival businesses, consultants look for the Symmetric Difference in their product lines. This reveals "Market Gaps"—features that one company has which the other lacks. It highlights the unique selling points that distinguish a brand from its competition.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="section-container fun-box">
+        <h2 class="sub-heading" style="color: #38bdf8;">LET'S HAVE FUN 🎮</h2>
+        <div class="input-stack">
+            <div class="input-group">
+                <label>Enter Set A:</label>
+                <input type="text" id="setA" placeholder="e.g. 1, 2, 3">
+            </div>
+            <div class="input-group">
+                <label>Enter Set B:</label>
+                <input type="text" id="setB" placeholder="e.g. 3, 4, 5">
+            </div>
+            <button class="calc-btn" onclick="runSymmetric()">⚡ Find Unique Elements ⚡</button>
+        </div>
+        
+        <div id="resBox" class="result-panel">
+            <h3 style="color:#38bdf8; font-size: 2.5rem; margin-bottom: 20px;">Result:</h3>
+            <p id="out" style="font-size:4rem; font-weight:900;"></p>
+        </div>
+    </div>
+
+    <a href="/set-operations" class="back-capsule"><span>↩</span> Back to Set Operations</a>
+
+    <script>
+        function runSymmetric() {
+            let a = document.getElementById('setA').value.split(',').map(x => x.trim()).filter(x => x);
+            let b = document.getElementById('setB').value.split(',').map(x => x.trim()).filter(x => x);
+            
+            // Elements in A not in B
+            let diff1 = a.filter(x => !b.includes(x));
+            // Elements in B not in A
+            let diff2 = b.filter(x => !a.includes(x));
+            
+            // Combine them
+            let result = [...diff1, ...diff2];
+            
+            // Display result
+            let resultText = result.length > 0 ? `{ ${[...new Set(result)].join(', ')} }` : "{ Ø } (Empty Set)";
+            document.getElementById('out').innerText = resultText;
+            
+            document.getElementById('resBox').style.display = 'block';
+            document.getElementById('resBox').scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
+    </script>
+</body>
+</html>

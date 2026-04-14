@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>XOR Gate | Discrete Math Toolkit</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <style>
+        .true-text { color: #4ade80; text-shadow: 0 0 10px #4ade80; font-weight: bold; }
+        .false-text { color: #f87171; text-shadow: 0 0 10px #f87171; font-weight: bold; }
+        .sim-input { width: 100%; padding: 12px; border-radius: 8px; border: 1px solid #a855f7; background: rgba(0,0,0,0.3); color: white; margin-top: 10px; }
+        table { width: 100%; border-collapse: collapse; background: rgba(30, 41, 59, 0.7); border-radius: 15px; overflow: hidden; }
+        th, td { padding: 15px; border: 1px solid rgba(255,255,255,0.1); text-align: center; }
+        .example-list { list-style: none; padding: 0; }
+        .example-list li { background: rgba(168, 85, 247, 0.1); padding: 12px; margin-bottom: 10px; border-radius: 8px; border-left: 4px solid #a855f7; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="main-title" style="font-size: 4rem; color: #a855f7;">The XOR Operator (⊕)</h1>
+
+        <div class="fade-in">
+            <p class="intro-text">
+                The XOR operator, or Exclusive OR, is a logical operation that outputs true only when the inputs differ from one another. In the realm of discrete mathematics, XOR represents the strict choice between two alternatives, ensuring that only a single condition is satisfied at any given time. It is a fundamental building block in computational arithmetic, particularly in the creation of half-adders and full-adders within CPU architectures. Unlike the standard OR gate, which allows for both inputs to be true, the XOR gate is inherently exclusionary, making it ideal for parity checks and error detection. It serves as a guardian of distinctness, ensuring that logical signals do not overlap in a way that would create ambiguity within a system's binary processing.
+            </p>
+            <p class="intro-text">
+                In practical applications, XOR is the backbone of modern cryptography, specifically in stream ciphers and private key encryption algorithms due to its reversible nature. It is also used extensively in digital signal processing to compare patterns and identify discrepancies between two data streams. Whether you are toggling a light switch in a three-way circuit or calculating complex hash functions, the XOR operator provides a unique logical footprint that is essential for data security and integrity. By requiring a state of "one or the other," it eliminates the possibility of a "both" scenario, which is crucial for managing exclusive permissions and state-based transitions in software engineering. Ultimately, XOR defines the boundary of logical uniqueness in the digital world.
+            </p>
+        </div>
+
+        <div class="grid-layout fade-in" style="grid-template-columns: 1fr 1fr; gap: 40px; margin-top: 50px;">
+            <div>
+                <h2 style="font-size: 2rem; margin-top: 0;">Truth Table 📊</h2>
+                <table>
+                    <thead>
+                        <tr style="color: #a855f7;">
+                            <th>Input A</th>
+                            <th>Input B</th>
+                            <th>A XOR B</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td><span class="true-text">T</span></td><td><span class="true-text">T</span></td><td><span class="false-text">F</span></td></tr>
+                        <tr><td><span class="true-text">T</span></td><td><span class="false-text">F</span></td><td><span class="true-text">T</span></td></tr>
+                        <tr><td><span class="false-text">F</span></td><td><span class="true-text">T</span></td><td><span class="true-text">T</span></td></tr>
+                        <tr><td><span class="false-text">F</span></td><td><span class="false-text">F</span></td><td><span class="false-text">F</span></td></tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div>
+                <h2 style="font-size: 2rem; margin-top: 0;">Real Life Examples 💡</h2>
+                <ul class="example-list">
+                    <li><b>Example 1:</b> "<b>EITHER</b> a light switch is UP" <b>OR</b> "it is DOWN."</li>
+                    <li><b>Example 2:</b> "<b>EITHER</b> the binary bit is 0" <b>OR</b> "the bit is 1."</li>
+                    <li><b>Example 3:</b> "<b>EITHER</b> Attacking mode" <b>OR</b> "defensive mode."</li>
+                    <li><b>Example 4:</b> "<b>EITHER</b> ordering Coffee" <b>OR</b> "ordering Tea."</li>
+                    <li><b>Example 5:</b> "<b>EITHER</b> winning the game" <b>OR</b> "losing the game."</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="highlight-box fade-in" style="margin-top: 80px;">
+            <h2 style="margin-top: 0; text-align: center;">Interactive Simulator 🕹️</h2>
+            <div style="text-align: left; max-width: 600px; margin: 0 auto;">
+                <label>Enter Statement A:</label>
+                <input type="text" id="stmtA" class="sim-input" placeholder="e.g., Sky is blue">
+                <div style="height: 20px;"></div>
+                <label>Enter Statement B:</label>
+                <input type="text" id="stmtB" class="sim-input" placeholder="e.g., Sun is a star">
+                <button onclick="runSimulator()" class="card" style="width: 100%; margin-top: 30px; padding: 15px; color: #a855f7; border: 2px solid #a855f7; background: transparent; font-weight: bold; cursor: pointer;">
+                    CHECK DIFFERENCE ⚡
+                </button>
+            </div>
+
+            <div id="resultBox" style="display: none; margin-top: 40px; padding: 20px; background: rgba(0,0,0,0.5); border-radius: 15px; border: 1px solid #a855f7; text-align: center;">
+                <h3 style="margin: 0; color: #a855f7;">Result:</h3>
+                <p id="resStatement" style="font-size: 1.2rem; margin: 10px 0; color: white;"></p>
+                <p id="resValue" style="font-size: 1.5rem; margin: 0;"></p>
+            </div>
+        </div>
+
+        <div style="text-align: center; margin-top: 50px;">
+            <a href="/truth" class="card" style="text-decoration: none; display: inline-block; padding: 15px 40px; color: #fff; background: #6d28d9; border: none; font-weight: bold;">
+                Back to Truth Table 🔙
+            </a>
+        </div>
+    </div>
+
+    <script>
+        async function runSimulator() {
+            const a = document.getElementById('stmtA').value.trim();
+            const b = document.getElementById('stmtB').value.trim();
+            
+            if(!a || !b) { alert("Please enter both statements!"); return; }
+
+            const response = await fetch('/xor-gate', {
+                method: 'POST',
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify({stmtA: a, stmtB: b})
+            });
+            const data = await response.json();
+
+            document.getElementById('resultBox').style.display = 'block';
+            document.getElementById('resStatement').innerText = `"${a}" XOR "${b}"`;
+            
+           
+        }
+    </script>
+</body>
+</html>

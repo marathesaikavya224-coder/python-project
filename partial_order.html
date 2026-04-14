@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Partial Order | The Hierarchy Engine 🌲</title>
+    <style>
+        @keyframes glow { 0% { text-shadow: 0 0 10px #fff; } 100% { text-shadow: 0 0 30px #10b981, 0 0 60px #10b981; } }
+        @keyframes float { 0% { transform: translateY(0px); } 50% { transform: translateY(-15px); } 100% { transform: translateY(0px); } }
+        
+        /* Fixed Body Alignment */
+        body { 
+            background-color: #020617; 
+            color: white; 
+            font-family: 'Segoe UI', sans-serif; 
+            margin: 0; 
+            padding: 0 20px 120px 20px; 
+            display: flex; 
+            flex-direction: column; 
+            align-items: center; /* Centers horizontal items */
+            justify-content: flex-start;
+            overflow-x: hidden; 
+            width: 100%;
+            box-sizing: border-box;
+        }
+        
+        .header-container { text-align: center; margin-top: 80px; margin-bottom: 60px; }
+        .main-header { font-size: 6rem; animation: glow 1.5s ease-in-out infinite alternate; margin: 0; font-weight: 900; letter-spacing: 15px; text-transform: uppercase; color: #fff; }
+        .symbol-box { font-size: 5rem; margin-top: 10px; animation: float 4s ease-in-out infinite; }
+
+        /* Added auto margins for centering */
+        .content-box { 
+            width: 95%; 
+            max-width: 1300px; 
+            background: rgba(16, 185, 129, 0.05); 
+            border: 5px solid #10b981; 
+            border-radius: 60px; 
+            padding: 80px 70px; 
+            margin: 50px auto 0 auto; /* Centered */
+            box-shadow: 0 30px 80px rgba(0,0,0,0.9); 
+            backdrop-filter: blur(20px); 
+            box-sizing: border-box;
+        }
+
+        .box-title { font-size: 4rem; color: #10b981; font-weight: 900; text-transform: uppercase; margin-bottom: 40px; text-align: center; letter-spacing: 4px; }
+        .para { font-size: 1.4rem; line-height: 2.3; color: #ecfdf5; text-align: justify; margin-bottom: 50px; }
+
+        .triad-container { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 30px; margin-bottom: 60px; }
+        .triad-card { background: rgba(255, 255, 255, 0.03); border: 3px solid #10b981; padding: 40px 30px; border-radius: 40px; text-align: center; transition: 0.3s; }
+        .triad-card:hover { transform: translateY(-10px); background: rgba(16, 185, 129, 0.1); }
+        .triad-card h4 { color: #6ee7b7; font-size: 2.2rem; margin-bottom: 15px; text-transform: uppercase; font-weight: 900; }
+
+        /* Wrapper centered with margin auto */
+        .columns-wrapper { 
+            display: grid; 
+            grid-template-columns: 1fr 1fr; 
+            gap: 60px; 
+            width: 95%; 
+            max-width: 1400px; 
+            margin: 100px auto 0 auto; /* Centered */
+        }
+
+        .column-box { background: rgba(16, 185, 129, 0.08); border: 2px solid #10b981; border-radius: 60px; padding: 60px; min-height: 1100px; box-sizing: border-box; }
+        .col-title { font-size: 3.5rem; color: #fff; font-weight: 800; margin-bottom: 50px; text-align: center; border-bottom: 4px solid #10b981; padding-bottom: 25px; }
+        
+        .hasse-viz { border: 2px dashed #6ee7b7; border-radius: 50px; padding: 50px; background: rgba(0,0,0,0.4); margin-bottom: 30px; text-align: center; }
+        .node { display: inline-block; width: 60px; height: 60px; border-radius: 15px; background: #10b981; color: black; line-height: 60px; font-weight: 900; font-size: 1.5rem; margin: 15px; box-shadow: 0 0 20px rgba(16, 185, 129, 0.5); }
+        .connector { width: 3px; height: 50px; background: #6ee7b7; margin: 0 auto; }
+
+        .example-chip { background: rgba(255,255,255,0.02); padding: 35px; margin-bottom: 30px; border-radius: 40px; border: 1px solid rgba(16, 185, 129, 0.3); transition: 0.4s; }
+        .example-chip:hover { transform: scale(1.05); background: rgba(16, 185, 129, 0.15); border-color: #fff; }
+        .example-chip b { color: #6ee7b7; font-size: 1.7rem; display: block; margin-bottom: 15px; }
+
+        /* Centered Simulator Box */
+        .sim-box { 
+            border: 10px solid #10b981; 
+            background: rgba(16, 185, 129, 0.03); 
+            width: 95%; 
+            max-width: 1300px; 
+            border-radius: 70px; 
+            padding: 100px 80px; 
+            margin: 100px auto 0 auto; /* Centered */
+            text-align: center; 
+            box-shadow: 0 0 100px rgba(16, 185, 129, 0.1); 
+            box-sizing: border-box;
+        }
+        
+        input { 
+            background: rgba(0, 0, 0, 0.6); 
+            border: 5px solid #10b981; 
+            border-radius: 40px; 
+            padding: 45px 50px; 
+            color: #6ee7b7; 
+            font-size: 3rem; 
+            width: 90%; 
+            max-width: 1100px;
+            text-align: center; 
+            margin-bottom: 60px; 
+            outline: none; 
+            transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            box-shadow: inset 0 0 30px rgba(16, 185, 129, 0.2);
+            font-family: 'Consolas', 'Courier New', monospace; 
+        }
+
+        input:focus { border-color: #fff; box-shadow: 0 0 60px rgba(16, 185, 129, 0.5); transform: scale(1.03); }
+
+        .calc-btn { background: #fff; color: #000; padding: 35px 120px; font-size: 2.8rem; font-weight: 900; border-radius: 120px; cursor: pointer; border: none; transition: 0.3s; text-transform: uppercase; letter-spacing: 2px; }
+        .calc-btn:hover { background: #10b981; color: white; transform: translateY(-5px); }
+        
+        .back-capsule { background-color: #1e293b; padding: 30px 80px; border-radius: 120px; text-decoration: none; color: white; font-weight: 900; font-size: 2rem; margin-top: 120px; border: 5px solid white; display: inline-flex; transition: 0.3s; }
+    </style>
+</head>
+<body>
+
+    <div class="header-container">
+        <h1 class="main-header">PARTIAL ORDER</h1>
+        <div class="symbol-box">≤ 🌲 ≼</div>
+    </div>
+
+    <div class="content-box">
+        <h2 class="box-title">The Hierarchy Engine</h2>
+        <p class="para">
+            A Partial Order Relation (or POSET) is the mathematical blueprint for <b>Ranking</b>. Unlike equivalence relations that treat elements as identical siblings, a partial order recognizes that some elements occupy a higher status than others. To qualify, a relation R on set A must strictly adhere to three non-negotiable laws: <b>Reflexivity</b>, <b>Antisymmetry</b>, and <b>Transitivity</b>. This structure allows us to say "A is less than or equal to B" without demanding that every single pair of elements in the set be comparable.
+        </p>
+        
+        <div class="triad-container">
+            <div class="triad-card"><h4>Reflexive</h4><p style="font-size:1.4rem;">(a, a) ∈ R</p></div>
+            <div class="triad-card"><h4>Antisymmetric</h4><p style="font-size:1.4rem;">(a,b) & (b,a) → a=b</p></div>
+            <div class="triad-card"><h4>Transitive</h4><p style="font-size:1.4rem;">a→b & b→c → a→c</p></div>
+        </div>
+    </div>
+
+    <div class="content-box" style="border-color: #fff;">
+        <h2 class="box-title" style="color: #fff;">Why Partial Orders? 🚀</h2>
+        <p class="para">
+            Partial Orders are the backbone of <b>Dependency Management</b> and <b>Parallel Scheduling</b>. When your operating system decides which tasks to run first, or when a compiler determines the order of operations for a script, it is navigating a partial order. The "Subset Relation" is the classic example: in a file system, a directory contains files, but those files don't necessarily have a relationship with files in a different directory.
+        </p>
+        <p class="para">
+            In Software Engineering, <b>Version Control Systems</b> like Git represent the history of a codebase as a partial order of commits. Furthermore, in Manufacturing and Project Management, partial orders define the "Critical Path." Mastering POSETs is the key to mastering <b>Concurrency</b> and <b>Resource Allocation</b>.
+        </p>
+    </div>
+
+    <div class="columns-wrapper">
+        <div class="column-box">
+            <h3 class="col-title">The Hasse Map 📉</h3>
+            <div class="hasse-viz">
+                <p style="color:#6ee7b7; font-weight:800; margin-bottom:20px; font-size:1.4rem;">Linear Chain: Divisibility</p>
+                <div class="node">8</div><div class="connector"></div>
+                <div class="node">4</div><div class="connector"></div>
+                <div class="node">2</div><div class="connector"></div>
+                <div class="node">1</div>
+            </div>
+            <div class="hasse-viz">
+                <p style="color:#6ee7b7; font-weight:800; margin-bottom:20px; font-size:1.4rem;">Power Set: Branching</p>
+                <div class="node">{a,b}</div><br>
+                <div style="display:flex; justify-content:center; gap:60px;">
+                    <div><div class="connector" style="transform:rotate(35deg)"></div><div class="node">{a}</div></div>
+                    <div><div class="connector" style="transform:rotate(-35deg)"></div><div class="node">{b}</div></div>
+                </div>
+                <div class="connector"></div><div class="node">∅</div>
+            </div>
+        </div>
+
+        <div class="column-box">
+            <h3 class="col-title">Real-World Ranking 🛡️</h3>
+            <div class="example-chip"><b>🚀 Divisibility (a | b)</b> Creates a beautiful factor tree where prime numbers sit just above the number 1.</div>
+            <div class="example-chip"><b>🚀 Subset Relation (⊆)</b> In any collection of sets, this describes containment and hierarchical grouping.</div>
+            <div class="example-chip"><b>🚀 Organizational Chart</b> A CEO is above a Manager, but two Managers in different departments are "incomparable".</div>
+            <div class="example-chip"><b>🚀 Task Prerequisites</b> The logical flow of a University degree: Course A → Course B.</div>
+            <div class="example-chip"><b>🚀 Git Commit History</b> Branches and Merges form a directed acyclic graph that is a perfect POSET.</div>
+            <div class="example-chip" style="border-color:#ef4444;">
+                <b style="color:#ef4444;">❌ Proper Subset (⊂)</b> 
+                Antisymmetric & Transitive, but NOT Reflexive.
+            </div>
+        </div>
+    </div>
+
+    <div class="sim-box">
+        <h1 class="box-title" style="margin-bottom:60px;">POSET VALIDATOR</h1>
+        <input type="text" id="userInput" placeholder="e.g. (1,1), (2,2), (1,2)">
+        <br>
+        <button class="calc-btn" onclick="checkPOSET()">⚡ ANALYZE HIERARCHY ⚡</button>
+        <div id="resultBox" style="margin-top:60px; font-size:3rem; font-weight:900; display:none;"></div>
+    </div>
+
+    <a href="/relations" class="back-capsule">↩ RETURN TO REGISTRY</a>
+
+    <script>
+        function checkPOSET() {
+            const val = document.getElementById('userInput').value;
+            const resBox = document.getElementById('resultBox');
+            const pairs = val.match(/\(\d+,\s*\d+\)/g) || [];
+            if(pairs.length === 0) { 
+                resBox.style.display="block"; 
+                resBox.style.color="#facc15";
+                resBox.innerHTML="⚠️ SYSTEM REQUIRES DATA INPUT"; 
+                return; 
+            }
+            const normalized = pairs.map(p => p.replace(/\s/g, ''));
+            const elements = [...new Set(normalized.flatMap(p => p.match(/\d+/g)))];
+            let isRef = elements.every(e => normalized.includes(`(${e},${e})`));
+            let isAnti = true;
+            normalized.forEach(p => {
+                const [a, b] = p.match(/\d+/g);
+                if (a !== b && normalized.includes(`(${b},${a})`)) isAnti = false;
+            });
+            let isTrans = true;
+            normalized.forEach(p1 => {
+                normalized.forEach(p2 => {
+                    const [a, b] = p1.match(/\d+/g);
+                    const [b2, c] = p2.match(/\d+/g);
+                    if (b === b2 && !normalized.includes(`(${a},${c})`)) isTrans = false;
+                });
+            });
+            resBox.style.display = "block";
+            if(isRef && isAnti && isTrans) {
+                resBox.style.color = "#10b981";
+                resBox.innerHTML = "🌲 HIERARCHY VALIDATED: VALID POSET";
+            } else {
+                resBox.style.color = "#ef4444";
+                resBox.innerHTML = "❌ POSET VIOLATION DETECTED";
+            }
+        }
+    </script>
+</body>
+</html>

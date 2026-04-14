@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NOT Gate | Discrete Math Toolkit</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <style>
+        .true-text { color: #4ade80; text-shadow: 0 0 10px #4ade80; font-weight: bold; }
+        .false-text { color: #f87171; text-shadow: 0 0 10px #f87171; font-weight: bold; }
+        .sim-input { width: 100%; padding: 12px; border-radius: 8px; border: 1px solid #fbbf24; background: rgba(0,0,0,0.3); color: white; margin-top: 10px; }
+        table { width: 100%; border-collapse: collapse; background: rgba(30, 41, 59, 0.7); border-radius: 15px; overflow: hidden; }
+        th, td { padding: 15px; border: 1px solid rgba(255,255,255,0.1); text-align: center; }
+        .example-list { list-style: none; padding: 0; }
+        .example-list li { background: rgba(251, 191, 36, 0.1); padding: 12px; margin-bottom: 10px; border-radius: 8px; border-left: 4px solid #fbbf24; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="main-title" style="font-size: 4rem; color: #fbbf24;">The NOT Operator (¬)</h1>
+        <div class="fade-in">
+            <p class="intro-text">The NOT operator, or logical negation, is a unary operation that flips the truth value of its operand. It is the simplest yet most vital logical tool for defining contradictions.</p>
+            <p class="intro-text">In digital systems, NOT gates (inverters) are used to flip bits, turning 0 into 1 and vice versa, which is fundamental for binary arithmetic.</p>
+        </div>
+        <div class="grid-layout fade-in" style="grid-template-columns: 1fr 1fr; gap: 40px; margin-top: 50px;">
+            <div>
+                <h2>Truth Table 📊</h2>
+                <table>
+                    <tr style="color: #fbbf24;"><th>Input A</th><th>NOT A</th></tr>
+                    <tr><td>T</td><td><span class="false-text">F</span></td></tr>
+                    <tr><td>F</td><td><span class="true-text">T</span></td></tr>
+                </table>
+            </div>
+            <div>
+                <h2>Real Life Examples 💡</h2>
+                <ul class="example-list">
+                    <li><b>NOT</b> "The door is open" (Means the door is closed).</li>
+                    <li><b>NOT</b> "It is raining" (Means it is sunny/dry).</li>
+                    <li><b>NOT</b> "The light is ON."</li>
+                </ul>
+            </div>
+        </div>
+        <div class="highlight-box fade-in" style="margin-top: 80px;">
+            <h2>Interactive Simulator 🕹️</h2>
+            <div style="text-align: left; max-width: 600px; margin: 0 auto;">
+                <label>Enter Statement A:</label>
+                <input type="text" id="stmtA" class="sim-input" placeholder="e.g., The sun is cold">
+                <button onclick="runSimulator()" class="card" style="width: 100%; margin-top: 30px; padding: 15px; color: #fbbf24; border: 2px solid #fbbf24; background: transparent; font-weight: bold; cursor: pointer;">NEGATE LOGIC ⚡</button>
+            </div>
+            <div id="resultBox" style="display: none; margin-top: 40px; padding: 20px; background: rgba(0,0,0,0.5); border-radius: 15px; border: 1px solid #fbbf24; text-align: center;">
+                <h3 style="margin: 0; color: #fbbf24;">Result:</h3>
+                <p id="resStatement" style="color: white;"></p>
+                <p id="resValue"></p>
+            </div>
+        </div>
+        <div style="text-align: center; margin-top: 50px;"><a href="/truth" class="card" style="text-decoration: none; display: inline-block; padding: 15px 40px; color: #fff; background: #b45309; border: none; font-weight: bold;">Back to Truth Table 🔙</a></div>
+    </div>
+    <script>
+        function runSimulator() {
+            const a = document.getElementById('stmtA').value.trim();
+            const box = document.getElementById('resultBox');
+            if(!a) { alert("Please enter a statement!"); return; }
+            box.style.display = 'block';
+            document.getElementById('resStatement').innerText = `NOT ("${a}")`;
+            // Invert logic (treating any input as True, so result is False)
+            
+        }
+    </script>
+</body>
+</html>

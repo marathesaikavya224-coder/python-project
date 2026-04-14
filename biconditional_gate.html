@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Biconditional | Discrete Math Toolkit</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <style>
+        .true-text { color: #4ade80; text-shadow: 0 0 10px #4ade80; font-weight: bold; }
+        .false-text { color: #f87171; text-shadow: 0 0 10px #f87171; font-weight: bold; }
+        .sim-input { width: 100%; padding: 12px; border-radius: 8px; border: 1px solid #818cf8; background: rgba(0,0,0,0.3); color: white; margin-top: 10px; }
+        table { width: 100%; border-collapse: collapse; background: rgba(30, 41, 59, 0.7); border-radius: 15px; overflow: hidden; }
+        th, td { padding: 15px; border: 1px solid rgba(255,255,255,0.1); text-align: center; }
+        .example-list { list-style: none; padding: 0; }
+        .example-list li { background: rgba(129, 140, 248, 0.1); padding: 10px; margin-bottom: 8px; border-radius: 8px; border-left: 4px solid #818cf8; font-size: 0.95rem; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="main-title" style="font-size: 4rem; color: #818cf8;">Biconditional (↔)</h1>
+
+        <div class="fade-in">
+            <p class="intro-text">
+                The Biconditional operator, commonly expressed as "p if and only if q," represents a powerful logical equivalence where two statements must share the exact same truth value to result in a true outcome. In discrete mathematics, the biconditional gate acts as a strict validator of synchronization, ensuring that either both inputs are true or both inputs are false simultaneously. If the inputs diverge in their truth values, the entire biconditional expression immediately evaluates to false, making it a critical tool for defining identical logical states. This operator is essential for creating mathematical definitions and proving that two distinct logical forms are equivalent within a given proof or algebraic system. In the world of computer architecture, the biconditional logic is used to verify that two independent signals or data streams are perfectly aligned before proceeding with a specific computation. It serves as a digital "mirror," where the state of the conclusion must perfectly reflect the state of the premise for the relationship to remain valid and logically consistent. Beyond simple circuitry, biconditionals allow for the construction of complex logical conditions where mutual dependency is required for system stability and accuracy. It is the mathematical embodiment of "equivalence," providing a rigorous framework for ensuring that separate components of a logical chain operate in complete and total harmony. Ultimately, the biconditional gate is a cornerstone of logical reasoning, transforming two-way dependencies into a single, verifiable value of absolute truth.
+            </p>
+            <p class="intro-text">
+                In practical terms, the biconditional operation is used to model systems where two events are inextricably linked and cannot occur independently of one another. It governs the logic of bi-directional synchronization, where a change in one component must be mirrored by a change in the other to maintain the integrity of the total system. From the low-level verification of data parity in memory modules to high-level software protocols that require handshake verification, the biconditional operator ensures perfect alignment. In database systems, biconditional logic can be used to enforce integrity constraints where two related fields must always be updated together to prevent data corruption or inconsistency. It provides a binary certainty that is vital for cryptographic algorithms, where the encryption and decryption processes must maintain a biconditional relationship to ensure data security. In artificial intelligence, biconditional statements help in defining reversible rules and symmetrical relationships within knowledge graphs and reasoning engines. The power of the biconditional gate lies in its ability to enforce strict mutual requirements, making it an indispensable tool for engineers and mathematicians alike. By requiring total agreement between inputs, the biconditional operator creates a robust foundation for building reliable and consistent logical structures in any digital environment. Whether in the context of a formal logic gate or a complex software algorithm, the biconditional provides the ultimate check for logical identity and mutual dependency.
+            </p>
+        </div>
+
+        <div class="grid-layout fade-in" style="grid-template-columns: 1fr 1fr; gap: 40px; margin-top: 50px;">
+            <div>
+                <h2>Truth Table 📊</h2>
+                <table>
+                    <tr style="color: #818cf8;"><th>A</th><th>B</th><th>A ↔ B</th></tr>
+                    <tr><td>T</td><td>T</td><td><span class="true-text">T</span></td></tr>
+                    <tr><td>T</td><td>F</td><td><span class="false-text">F</span></td></tr>
+                    <tr><td>F</td><td>T</td><td><span class="false-text">F</span></td></tr>
+                    <tr><td>F</td><td>F</td><td><span class="true-text">T</span></td></tr>
+                </table>
+            </div>
+            <div>
+                <h2>Real Life Examples 💡</h2>
+                <ul class="example-list">
+                    <li><b>Example 1:</b> "You can vote <b>IF AND ONLY IF</b> you are 18 or older."</li>
+                    <li><b>Example 2:</b> "Triangle is equilateral <b>IF AND ONLY IF</b> all angles are 60°."</li>
+                    <li><b>Example 3:</b> "Integer is even <b>IF AND ONLY IF</b> it is divisible by 2."</li>
+                    <li><b>Example 4:</b> "The light is on <b>IF AND ONLY IF</b> the switch is up."</li>
+                    <li><b>Example 5:</b> "You are my sibling <b>IF AND ONLY IF</b> we share parents."</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="highlight-box fade-in" style="margin-top: 50px; text-align: center;">
+            <h2 style="margin:0;">Interactive Simulator 🕹️</h2>
+            <div style="text-align: left; max-width: 600px; margin: 20px auto;">
+                <label>Statement A:</label><input type="text" id="stmtA" class="sim-input" placeholder="e.g., You are a citizen">
+                <div style="height: 15px;"></div>
+                <label>Statement B:</label><input type="text" id="stmtB" class="sim-input" placeholder="e.g., You have a passport">
+                <button onclick="runSimulator()" class="card" style="width: 100%; margin-top: 25px; padding: 15px; color: #818cf8; border: 2px solid #818cf8; background: transparent; font-weight: bold; cursor: pointer;">CHECK LOGIC ⚡</button>
+            </div>
+            
+            <div id="resultBox" style="display: none; margin-top: 40px; padding: 30px; background: rgba(0,0,0,0.5); border-radius: 15px; border: 1px solid #818cf8; text-align: center;">
+                <h3 style="margin: 0 0 10px 0; color: #818cf8; font-size: 1.8rem;">Result:</h3>
+                <p id="resStatement" style="font-size: 1.4rem; margin: 0; color: white;"></p>
+            </div>
+        </div>
+
+        <div style="text-align: center; margin-top: 40px;"><a href="/truth" class="card" style="text-decoration: none; display: inline-block; padding: 15px 40px; color: #fff; background: #3730a3; border: none; font-weight: bold;">Back to Truth Table 🔙</a></div>
+    </div>
+
+    <script>
+        function runSimulator() {
+            const a = document.getElementById('stmtA').value.trim();
+            const b = document.getElementById('stmtB').value.trim();
+            const box = document.getElementById('resultBox');
+            if(!a || !b) { alert("Please enter both!"); return; }
+            box.style.display = 'block';
+            document.getElementById('resStatement').innerText = `"${a}" IF AND ONLY IF "${b}"`;
+        }
+    </script>
+</body>
+</html>

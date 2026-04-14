@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Set Operations | Discrete Math Toolkit</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <style>
+        :root { --set-glow: 0 0 20px rgba(56, 189, 248, 0.6); }
+        .intro-section { margin-top: 50px; text-align: left; line-height: 1.8; }
+        .highlight-text { color: #38bdf8; font-weight: 600; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="main-title" style="font-size: 5rem; text-shadow: 0 0 30px #38bdf8;">SET OPERATIONS</h1>
+
+        <div class="intro-section fade-in">
+            <p class="intro-text">Set operations are the fundamental building blocks of mathematical logic and data organization. They allow us to manipulate collections of objects—called sets—by combining, isolating, or comparing their elements. Whether we are grouping data or finding commonalities, these operations provide a precise language for defining relationships.</p>
+            <p class="intro-text">In Discrete Mathematics, understanding how sets interact is crucial for mastering probability, functions, and computer algorithms. By treating data as distinct groups, we can solve complex logical problems through simple, visualizable rules.This conceptual framework extends into the digital realm, where every database query and search engine algorithm relies on the intersection and union of parameters to filter noise from relevant information. As we scale these operations, we encounter the Power Set, which explores every possible combination within a group, and the Cartesian Product, which maps relationships between entirely different categories of data. These interactions are governed by strict algebraic laws, such as the Distributive and De Morgan’s Laws, which ensure that even the most convoluted logical expressions can be simplified and verified. Furthermore, the study of set differences and complements allows mathematicians to define what is missing or excluded, providing a complete picture of a defined universe. In modern computing, these principles translate directly into Boolean logic, forming the binary foundation of "true" and "false" that powers all software. By mastering these set-theoretic tools, one gains the ability to model real-world scenarios—from social networks to supply chains—with mathematical certainty. Ultimately, set operations are not merely abstract exercises but are the essential mechanics used to structure the vast, chaotic influx of information in our modern age.</p>
+        </div>
+
+       <div class="info-container fade-in" style="margin-top: -20px; padding: 40px; background: rgba(56, 189, 248, 0.05); border-radius: 20px; border: 1px dashed rgba(56, 189, 248, 0.3); max-width: 1000px; margin-left: auto; margin-right: auto; position: relative; z-index: 10;">
+    
+    <h2 style="color: #38bdf8; text-align: center; font-size: 2.8rem; margin-top: -10px; margin-bottom: 25px; letter-spacing: -1px; font-weight: 800;">
+        Why Set Operations? 🤔
+    </h2>
+
+    <p style="color: #cbd5e1; line-height: 1.8; text-align: center; font-size: 1.15rem; margin-bottom: 20px;">
+        Without set operations, modern database management and search engines would cease to function. They allow us to filter through billions of data points to find exactly what we need, such as <span style="color: #38bdf8; font-weight: bold;">"users who are active"</span> AND <span style="color: #38bdf8; font-weight: bold;">"users who live in New York."</span>
+    </p>
+
+    <p style="color: #cbd5e1; line-height: 1.8; text-align: center; font-size: 1.15rem; margin-bottom: 20px;">
+        In the world of <strong>Artificial Intelligence</strong> and <strong>Big Data</strong>, sets help machines group similar behaviors and predict outcomes. By mastering operations like Union and Intersection, we can create complex filters that power everything from your Netflix recommendations to social media algorithms.
+    </p>
+
+    <p style="color: #cbd5e1; line-height: 1.8; text-align: center; font-size: 1.15rem;">
+        Beyond computation, set operations help us categorize the world. They provide the framework for <strong>Venn diagrams</strong> and <strong>Boolean logic</strong>, turning abstract ideas into structured, manageable components that drive precise decision-making in modern science and global business.
+    </p>
+
+</div>
+
+        <div class="fade-in" style="margin-top: 60px;">
+            <h2 style="color: #38bdf8;">Real-World Applications 🚀</h2>
+            <div class="grid-layout" style="grid-template-columns: 1fr 1fr 1fr; gap: 20px;">
+                <div class="card" style="border: 1px solid #38bdf8; background: rgba(56, 189, 248, 0.1);">
+                    <h3>Database Queries🗄️</h3>
+                    <p style="font-size: 0.9rem;">SQL joins and filters use Set Theory to combine tables and find specific customer records efficiently.</p>
+                </div>
+                <div class="card" style="border: 1px solid #38bdf8; background: rgba(56, 189, 248, 0.1);">
+                    <h3>Search Engines🔍</h3>
+                    <p style="font-size: 0.9rem;">Google uses intersections to find pages containing all your keywords and differences to exclude unwanted terms.</p>
+                </div>
+                <div class="card" style="border: 1px solid #38bdf8; background: rgba(56, 189, 248, 0.1);">
+                    <h3>Digital Graphics🎨</h3>
+                    <p style="font-size: 0.9rem;">Graphic design software uses Boolean set operations to merge, subtract, or intersect shapes to create complex logos.</p>
+                </div>
+            </div>
+        </div>
+
+        <h2 style="text-align: center; color: #fff; margin-top: 80px; margin-bottom: 30px;">Explore different Set Operations 🧠</h2>
+
+<div class="grid-layout fade-in" style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 20px;">
+    <a href="/union" style="text-decoration: none; color: inherit;">
+        <div class="card" style="background: #0369a1; padding: 15px; min-height: 160px; display: flex; flex-direction: column; justify-content: center;">
+            <h3 style="text-align: center;">Union (∪) 🤝</h3>
+            <p style="font-size: 0.9rem; text-align: center;">Combines all unique elements from both sets. The "OR" of set theory.</p>
+        </div>
+    </a>
+
+    <a href="/intersection" style="text-decoration: none; color: inherit;">
+        <div class="card" style="background: #0d9488; padding: 15px; min-height: 160px; display: flex; flex-direction: column; justify-content: center;">
+            <h3 style="text-align: center;">Intersection (∩) 🎯</h3>
+            <p style="font-size: 0.9rem; text-align: center;">Includes only elements common to both sets. The "AND" of set theory.</p>
+        </div>
+    </a>
+
+    <a href="/difference" style="text-decoration: none; color: inherit;">
+        <div class="card" style="background: #b45309; padding: 15px; min-height: 160px; display: flex; flex-direction: column; justify-content: center;">
+            <h3 style="text-align: center;">Difference (-) ➖</h3>
+            <p style="font-size: 0.9rem; text-align: center;">Elements in Set A that are NOT in Set B. A logical subtraction.</p>
+        </div>
+    </a>
+</div>
+
+<div class="fade-in" style="display: flex; justify-content: center; gap: 40px; margin-top: 20px;">
+    <a href="/complement" style="text-decoration: none; color: inherit; width: 31%;">
+        <div class="card" style="background: #4338ca; padding: 15px; min-height: 160px; display: flex; flex-direction: column; justify-content: center;">
+            <h3 style="text-align: center;">Complement (A') 🌓</h3>
+            <p style="font-size: 0.9rem; text-align: center;">All elements in the Universal set that are not in the specified set.</p>
+        </div>
+    </a>
+
+    <a href="/symmetric-difference" style="text-decoration: none; color: inherit; width: 31%;">
+        <div class="card" style="background: #be185d; padding: 15px; min-height: 160px; display: flex; flex-direction: column; justify-content: center;">
+            <h3 style="text-align: center;">Symmetric Diff (Δ) 🔄</h3>
+            <p style="font-size: 0.9rem; text-align: center;">Elements in either set, but not in both. The "XOR" of sets.</p>
+        </div>
+    </a>
+</div>
+
+        <div style="text-align: center; margin-top: 60px; margin-bottom: 60px;">
+            <a href="/" class="card" style="text-decoration: none; display: inline-block; padding: 15px 40px; color: #fff; background: #b91c1c; border: none; font-weight: bold;">
+                ← Back to Toolkit Home
+            </a>
+        </div>
+    </div>
+</body>
+</html>

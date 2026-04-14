@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OR Gate | Discrete Math Toolkit</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <style>
+        .true-text { color: #4ade80; text-shadow: 0 0 10px #4ade80; font-weight: bold; }
+        .false-text { color: #f87171; text-shadow: 0 0 10px #f87171; font-weight: bold; }
+        .sim-input { width: 100%; padding: 12px; border-radius: 8px; border: 1px solid #f472b6; background: rgba(0,0,0,0.3); color: white; margin-top: 10px; }
+        table { width: 100%; border-collapse: collapse; background: rgba(30, 41, 59, 0.7); border-radius: 15px; overflow: hidden; }
+        th, td { padding: 15px; border: 1px solid rgba(255,255,255,0.1); text-align: center; }
+        .example-list { list-style: none; padding: 0; }
+        .example-list li { background: rgba(244, 114, 182, 0.1); padding: 12px; margin-bottom: 10px; border-radius: 8px; border-left: 4px solid #f472b6; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="main-title" style="font-size: 4rem; color: #f472b6;">The OR Operator (∨)</h1>
+
+        <div class="fade-in">
+            <p class="intro-text">
+                The OR operator, known as a logical disjunction, is a binary operation that results in a true value if at least one of its operands is true. Unlike the strict requirement of the AND gate, the OR gate represents a condition of possibility and inclusion. In discrete mathematics, it is the primary tool for modeling scenarios where multiple pathways can lead to a successful outcome, acting as the foundation for flexible logical structures. It allows for the construction of complex boolean expressions where variety and redundancy are permitted, ensuring that as long as any single condition remains valid, the entire logical statement maintains its integrity.
+            </p>
+            <p class="intro-text">
+                In practical computer science, the OR operator is essential for handling multiple valid inputs or fallback options. Whether it's a search algorithm looking for any of several keywords or a user interface that accepts either a click or a keystroke, the OR logic ensures that a system remains functional as long as a single valid condition is met. It effectively widens the scope of logical success across the digital landscape. By providing multiple avenues for a 'True' result, it powers error-handling routines, database query flexibility, and responsive design, making it the mathematical backbone of user-centric digital experiences where perfection is not required for progress.
+            </p>
+        </div>
+
+        <div class="grid-layout fade-in" style="grid-template-columns: 1fr 1fr; gap: 40px; margin-top: 50px;">
+            <div>
+                <h2 style="font-size: 2rem; margin-top: 0;">Truth Table 📊</h2>
+                <table>
+                    <thead>
+                        <tr style="color: #f472b6;">
+                            <th>Input A</th>
+                            <th>Input B</th>
+                            <th>A OR B</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td><span class="true-text">T</span></td><td><span class="true-text">T</span></td><td><span class="true-text">T</span></td></tr>
+                        <tr><td><span class="true-text">T</span></td><td><span class="false-text">F</span></td><td><span class="true-text">T</span></td></tr>
+                        <tr><td><span class="false-text">F</span></td><td><span class="true-text">T</span></td><td><span class="true-text">T</span></td></tr>
+                        <tr><td><span class="false-text">F</span></td><td><span class="false-text">F</span></td><td><span class="false-text">F</span></td></tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div>
+                <h2 style="font-size: 2rem; margin-top: 0;">Real Life Examples 💡</h2>
+                <ul class="example-list">
+                    <li><b>Example 1:</b> "I will wear a jacket" <b>OR</b> "I will stay indoors."</li>
+                    <li><b>Example 2:</b> "Pay using a Credit Card" <b>OR</b> "Pay using PayPal."</li>
+                    <li><b>Example 3:</b> "The file exists" <b>OR</b> "The folder is empty."</li>
+                    <li><b>Example 4:</b> "It is Saturday" <b>OR</b> "It is Sunday."</li>
+                    <li><b>Example 5:</b> "User is an Admin" <b>OR</b> "User has special permission."</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="highlight-box fade-in" style="margin-top: 80px;">
+            <h2 style="margin-top: 0;">Interactive Simulator 🕹️</h2>
+            <div style="text-align: left; max-width: 600px; margin: 0 auto;">
+                <label>Enter Statement A:</label>
+                <input type="text" id="stmtA" class="sim-input" placeholder="e.g., Sky is blue">
+                <div style="height: 20px;"></div>
+                <label>Enter Statement B:</label>
+                <input type="text" id="stmtB" class="sim-input" placeholder="e.g., Sky is green">
+                <button onclick="runSimulator()" class="card" style="width: 100%; margin-top: 30px; padding: 15px; color: #f472b6; border: 2px solid #f472b6; background: transparent; font-weight: bold; cursor: pointer;">
+                    CHECK LOGIC ⚡
+                </button>
+            </div>
+
+            <div id="resultBox" style="display: none; margin-top: 40px; padding: 20px; background: rgba(0,0,0,0.5); border-radius: 15px; border: 1px solid #f472b6; text-align: center;">
+                <h3 style="margin: 0; color: #f472b6;">Result:</h3>
+                <p id="resStatement" style="font-size: 1.2rem; margin: 10px 0; color: white;"></p>
+                <p id="resValue" style="font-size: 1.5rem; margin: 0;"></p>
+            </div>
+        </div>
+
+        <div style="text-align: center; margin-top: 50px;">
+            <a href="/truth" class="card" style="text-decoration: none; display: inline-block; padding: 15px 40px; color: #fff; background: #be185d; border: none; font-weight: bold;">
+                Back to Truth Table 🔙
+            </a>
+        </div>
+    </div>
+
+    <script>
+        async function runSimulator() {
+            const a = document.getElementById('stmtA').value.trim();
+            const b = document.getElementById('stmtB').value.trim();
+            const box = document.getElementById('resultBox');
+            const resValue = document.getElementById('resValue');
+            const resStatement = document.getElementById('resStatement');
+            
+            if(!a || !b) { alert("Please enter both statements!"); return; }
+
+            // SEND TO BACKEND FOR DETECTION
+            const response = await fetch('/or-gate', {
+                method: 'POST',
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify({stmtA: a, stmtB: b})
+            });
+            const data = await response.json();
+
+            box.style.display = 'block';
+            resStatement.innerText = `"${a}" OR "${b}"`;
+            
+
+        }
+    </script>
+</body>
+</html>

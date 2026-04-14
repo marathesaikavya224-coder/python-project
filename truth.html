@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Truth Tables | Discrete Math Toolkit</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+       
+        <header class="fade-in">
+            <h1 class="main-title" style="font-size: 4rem;">Truth Table in Discrete Mathematics</h1>
+            <p class="intro-text">
+                Truth tables are the primary mathematical tool used to determine the functional values of logical expressions based on their functional components. In the realm of discrete mathematics, these tables provide a systematic method for exhaustively mapping out every possible scenario for a set of logical variables, ensuring that the validity of an argument can be tested with absolute mathematical certainty. By breaking down complex compound statements into their simplest binary forms, truth tables allow us to visualize the flow of logic in a way that is both structured and indisputable, forming the basis for propositional calculus.
+            </p>
+            <p class="intro-text">
+                Beyond mere calculation, truth tables serve as a foundational concept in the design of digital circuits and computer programming logic. They allow engineers and mathematicians to identify tautologies, contradictions, and contingencies within any given system, effectively serving as a blueprint for logical consistency. As we explore the interactions between variables like P, Q, and R, the truth table acts as a bridge between human reasoning and machine processing, providing a clear, finite output for every possible combination of inputs in the vast landscape of Boolean algebra.
+            </p>
+        </header>
+
+        <div class="highlight-box fade-in">
+            <h2>Why do we use Truth Table? 🤔</h2>
+            <p>
+                We use truth tables because they provide a foolproof, visual representation of how logical operators interact with one another to produce a final outcome. In complex systems where multiple variables are dependent on one another, it is often impossible to track the final state of a system through mental calculation alone. Truth tables eliminate this ambiguity by providing a complete "map" of logical space, ensuring that no potential combination of true or false inputs is overlooked. This makes them essential for verifying the accuracy of complex logical proofs and for simplifying boolean expressions to their most efficient forms.
+            </p>
+            <p>
+                Furthermore, truth tables are the cornerstone of error-checking in both software development and hardware engineering. By simulating every possible state of a logic gate or a conditional statement, developers can predict exactly how a system will behave under any circumstances, preventing logic errors before they occur in a live environment. Whether you are building a simple "if-else" statement in code or designing the intricate architecture of a modern CPU, truth tables provide the rigorous verification needed to ensure that the outputs are always reliable, predictable, and mathematically sound.
+            </p>
+        </div>
+
+        <h2 style="text-align: center; color: #38bdf8;">Applications of Truth Table 🚀</h2>
+        <div class="grid-layout fade-in">
+            <div class="card">
+                <h3>Digital Logic 💻</h3>
+                <p>Used to design and simplify the physical logic gates within computer hardware.<br>They ensure that electrical signals are processed correctly to perform calculations.</p>
+            </div>
+            <div class="card">
+                <h3>Algorithm Analysis 🔍</h3>
+                <p>Helps programmers verify the correctness of complex conditional branches in code.<br>By mapping inputs, developers can avoid infinite loops and logical deadlocks.</p>
+            </div>
+            <div class="card">
+                <h3>Legal & Philosophy ⚖️</h3>
+                <p>Used to test the validity of complex arguments and detect logical fallacies.<br>It provides a mathematical framework for analyzing the consistency of human language.</p>
+            </div>
+        </div>
+
+      <h2 style="text-align: center; color: #fff; text-shadow: var(--text-glow); margin-top: 30px; margin-bottom: 25px;">
+    Explore different Truth Tables 🧠
+</h2>
+
+<div class="grid-layout fade-in" style="padding-bottom: 30px;">
+    
+    <a href="/and-gate" style="text-decoration: none; color: inherit; display: block; transition: transform 0.3s ease;">
+        <div class="card" style="background: #1e40af; border: none; cursor: pointer; padding: 15px; min-height: 160px; display: flex; flex-direction: column; justify-content: center;">
+            <h3 style="color: #ffffff; text-shadow: 0 0 10px rgba(255,255,255,0.5); margin-bottom: 8px; font-size: 1.2rem; text-align: center;">AND (∧)</h3>
+            <p style="color: #ffffff; font-size: 0.9rem; line-height: 1.4; text-align: center; margin: 0;">True only if both inputs are True.<br>Logical intersection.</p>
+        </div>
+    </a>
+
+    <a href="/or-gate" style="text-decoration: none; color: inherit; display: block; transition: transform 0.3s ease;">
+        <div class="card" style="background: #be185d; border: none; cursor: pointer; padding: 15px; min-height: 160px; display: flex; flex-direction: column; justify-content: center;">
+            <h3 style="color: #ffffff; text-shadow: 0 0 10px rgba(255,255,255,0.5); margin-bottom: 8px; font-size: 1.2rem; text-align: center;">OR (∨)</h3>
+            <p style="color: #ffffff; font-size: 0.9rem; line-height: 1.4; text-align: center; margin: 0;">True if at least one input is True.<br>Logical union.</p>
+        </div>
+    </a>
+
+    <a href="/not-gate" style="text-decoration: none; color: inherit; display: block; transition: transform 0.3s ease;">
+        <div class="card" style="background: #b45309; border: none; cursor: pointer; padding: 15px; min-height: 160px; display: flex; flex-direction: column; justify-content: center;">
+            <h3 style="color: #ffffff; text-shadow: 0 0 10px rgba(255,255,255,0.5); margin-bottom: 8px; font-size: 1.2rem; text-align: center;">NOT (¬)</h3>
+            <p style="color: #ffffff; font-size: 0.9rem; line-height: 1.4; text-align: center; margin: 0;">Flips the input truth value.<br>Logical inversion.</p>
+        </div>
+    </a>
+
+    <a href="/xor-gate" style="text-decoration: none; color: inherit; display: block; transition: transform 0.3s ease;">
+        <div class="card" style="background: #6d28d9; border: none; cursor: pointer; padding: 15px; min-height: 160px; display: flex; flex-direction: column; justify-content: center;">
+            <h3 style="color: #ffffff; text-shadow: 0 0 10px rgba(255,255,255,0.5); margin-bottom: 8px; font-size: 1.2rem; text-align: center;">XOR (⊕)</h3>
+            <p style="color: #ffffff; font-size: 0.9rem; line-height: 1.4; text-align: center; margin: 0;">True only if inputs are different.<br>Exclusive logic.</p>
+        </div>
+    </a>
+
+    <a href="/implication-gate" style="text-decoration: none; color: inherit; display: block; transition: transform 0.3s ease;">
+        <div class="card" style="background: #0f766e; border: none; cursor: pointer; padding: 15px; min-height: 160px; display: flex; flex-direction: column; justify-content: center;">
+            <h3 style="color: #ffffff; text-shadow: 0 0 10px rgba(255,255,255,0.5); margin-bottom: 8px; font-size: 1.2rem; text-align: center;">Implication (→)</h3>
+            <p style="color: #ffffff; font-size: 0.9rem; line-height: 1.4; text-align: center; margin: 0;">False only if T implies F.<br>Conditional reasoning.</p>
+        </div>
+    </a>
+
+    <a href="/biconditional-gate" style="text-decoration: none; color: inherit; display: block; transition: transform 0.3s ease;">
+        <div class="card" style="background: #b91c1c; border: none; cursor: pointer; padding: 15px; min-height: 160px; display: flex; flex-direction: column; justify-content: center;">
+            <h3 style="color: #ffffff; text-shadow: 0 0 10px rgba(255,255,255,0.5); margin-bottom: 8px; font-size: 1.2rem; text-align: center;">Biconditional (↔)</h3>
+            <p style="color: #ffffff; font-size: 0.9rem; line-height: 1.4; text-align: center; margin: 0;">True if both values are same.<br>Logical equivalence.</p>
+        </div>
+    </a>
+
+
+</div>
+</div>
+
+        <div class="highlight-box fade-in" style="border-left: 5px solid #a855f7; margin-top: 80px; text-align: center;">
+            <p><i>Ready to calculate your own? Interactive Generator coming in the next phase!</i></p>
+            <div style="text-align: center; margin-top: 40px; margin-bottom: 60px;">
+    <a href="/" class="card" style="text-decoration: none; display: inline-block; padding: 15px 40px; color: #fff; background: #b91c1c; border: none; font-weight: bold; font-size: 1.1rem; transition: transform 0.3s ease;">
+        ← Back to Toolkit Home
+    </a>
+</div>
+        </div>
+
+    </div>
+</body>
+</html>

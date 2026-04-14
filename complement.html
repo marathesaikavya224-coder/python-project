@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Set Operations - Complement 🌓</title>
+    <style>
+        @keyframes glow { 0% { text-shadow: 0 0 10px #fff; } 100% { text-shadow: 0 0 30px #4ade80, 0 0 60px #4ade80; } }
+        body { background-color: #043952; color: white; font-family: 'Segoe UI', sans-serif; margin: 0; padding: 0 20px 80px 20px; display: flex; flex-direction: column; align-items: center; }
+        
+        /* Header Section */
+        .header-container { display: flex; flex-direction: column; align-items: center; margin-top: 50px; margin-bottom: 40px; }
+        .main-header { font-size: 5rem; animation: glow 1.5s ease-in-out infinite alternate; margin: 0; font-weight: 900; letter-spacing: 5px; text-transform: uppercase; text-align: center; }
+        .symbol-box { font-size: 5rem; margin-top: 10px; filter: drop-shadow(0 0 15px rgba(74, 222, 128, 0.4)); }
+
+        .content-paragraph { max-width: 1150px; margin-bottom: 35px; text-align: justify; line-height: 2; color: #e2e8f0; font-size: 1.25rem; }
+        .section-container { width: 95%; max-width: 1200px; background: rgba(255, 255, 255, 0.05); border: 4px solid #4ade80; border-radius: 50px; padding: 70px 50px; margin-top: 60px; box-shadow: 0 25px 60px rgba(0,0,0,0.7); text-align: center; backdrop-filter: blur(15px); }
+        .sub-heading { font-size: 4rem; margin-bottom: 50px; color: #4ade80; font-weight: 800; text-transform: uppercase; }
+        
+        /* Venn Diagram - Box (Universal Set) with Circle inside */
+        .venn-wrapper { display: flex; justify-content: center; align-items: center; height: 400px; position: relative; margin-bottom: 20px; }
+        .universal-box { width: 500px; height: 350px; border: 4px solid white; background: rgba(74, 222, 128, 0.6); position: relative; display: flex; justify-content: center; align-items: center; border-radius: 20px; }
+        .circle-a { width: 220px; height: 220px; border-radius: 50%; border: 4px solid white; background: #043952; display: flex; justify-content: center; align-items: center; font-weight: 900; font-size: 2rem; }
+        .venn-label { position: absolute; top: 15px; right: 20px; font-weight: 900; font-size: 2.5rem; color: white; }
+
+        /* Application Cards - Capsule Style */
+        .grid-container { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; margin-top: 50px; }
+        .app-card { padding: 60px 30px; border-radius: 40px; min-height: 600px; display: flex; flex-direction: column; align-items: center; text-align: center; border: 1px solid rgba(255,255,255,0.1); transition: 0.4s ease; }
+        .app-card:hover { transform: translateY(-20px); border-color: white; box-shadow: 0 30px 60px rgba(0,0,0,0.5); }
+        .app-card h3 { font-size: 2.4rem; margin-bottom: 20px; font-weight: 800; }
+        .app-card .icon { font-size: 3rem; margin-bottom: 20px; }
+        .app-card p { font-size: 1.15rem; line-height: 1.8; color: rgba(255,255,255,0.9); }
+        
+        /* Centered Input Section */
+        .fun-box { border: 6px solid #fb7185; background: rgba(251, 113, 133, 0.05); }
+        .input-stack { display: flex; flex-direction: column; align-items: center; gap: 30px; width: 100%; }
+        .input-group { display: flex; flex-direction: column; align-items: center; width: 100%; }
+        .input-group label { font-size: 2.2rem; font-weight: 900; color: #fb7185; margin-bottom: 15px; }
+        
+        input { background: #021a26; border: 4px solid #fb7185; border-radius: 30px; padding: 25px; color: white; font-size: 1.8rem; width: 600px; text-align: center; outline: none; transition: 0.3s; }
+        input:focus { box-shadow: 0 0 20px #fb7185; }
+
+        .calc-btn { background: #fb7185; color: white; padding: 30px 100px; font-size: 2.5rem; font-weight: 900; border-radius: 100px; cursor: pointer; border: none; transition: 0.3s; margin-top: 20px; }
+        .calc-btn:hover { transform: scale(1.05); box-shadow: 0 0 30px #fb7185; }
+
+        .result-panel { margin-top: 50px; padding: 50px; background: #021a26; border: 5px solid #4ade80; border-radius: 40px; display: none; width: 80%; }
+        .back-capsule { background-color: #ff0000 !important; padding: 20px 60px; border-radius: 100px; text-decoration: none; color: white !important; font-weight: 900; font-size: 1.6rem; margin-top: 100px; border: 3px solid white; display: flex; gap: 20px; }
+    </style>
+</head>
+<body>
+    <div class="header-container">
+        <h1 class="main-header">COMPLEMENT</h1>
+        <div class="symbol-box">🌓</div>
+    </div>
+
+    <div class="content-paragraph">
+        The Complement of a set, denoted by A' or Aᶜ, is a fundamental set-theoretic operation that identifies all elements residing within the Universal Set (U) that are strictly not members of the specific Set A. Mathematically, the complement provides the relative negation of a group, effectively partitioning the entire universe of discourse into two mutually exclusive categories: those within the set and those outside of it. In the realm of discrete mathematics and formal logic, the complement acts as the structural representation of the NOT operator, where an element's membership in A' is directly contingent upon its lack of membership in A. This operation is critical for establishing the boundaries of truth and existence within a defined system, as it allows logicians to describe a population by specifying what it is not rather than what it is. Beyond simple membership, the complement provides a rigorous framework for navigating complex logical spaces, enabling the derivation of advanced concepts such as De Morgan’s Laws and the principles of inclusion-exclusion. It is the mathematical embodiment of "the remainder," ensuring that the resulting set encompasses every possible relevant entity that does not satisfy the primary criteria of the original collection. By focusing on the vast landscape of elements that fall outside a specific boundary, the complement operator facilitates the creation of comprehensive analytical models in probability, topology, and electronic circuit design. It serves as a precision tool for engineers who must manage the binary states of "Active" versus "Inactive" or "Match" versus "No-Match" in large-scale data architectures.
+    </div>
+
+    <div class="content-paragraph">
+        In practical computer science, the complement operation is indispensable for memory management and the execution of low-level bitwise operations that drive the fundamental logic of CPU cycles. It governs the functionality of the NOT gate in digital circuitry, which flips high signals to low and vice versa, providing the necessary inversion for complex arithmetic and logic units to perform subtraction. From the architecture of search engines that utilize "negative keywords" to exclude irrelevant results from a user’s query, to security protocols that monitor for any traffic that is NOT part of a trusted whitelist, the complement is everywhere. In high-level data science, it is used to identify outliers or "missed opportunities" by comparing a specific cohort against the global population of a dataset, revealing gaps in user engagement or system performance. It is the core mechanism behind modern error-detection codes that verify the integrity of transmitted information by checking the complement of checksums for potential data corruption. In the field of cybersecurity, complement logic allows for the creation of "default-deny" policies, where the system implicitly blocks the entire complement of a small, explicitly permitted set of actions. The power of this gate lies in its ability to provide a complete picture of a system’s environment by accounting for every single possibility outside the focal point of interest. By requiring an element to be absent from the input set but present in the universe, the complement operator ensures a binary exhaustiveness essential for reliable automated reasoning and secure system auditing. Ultimately, the complement gate acts as a universal inverter in the digital age, transforming the narrow focus of a single set into a comprehensive understanding of the entire surrounding context.
+    </div>
+
+    <div class="section-container">
+        <h2 class="sub-heading">Venn Diagram 📊</h2>
+        <div class="venn-wrapper">
+            <div class="universal-box">
+                <div class="circle-a">SET A</div>
+                <div class="venn-label">U</div>
+            </div>
+        </div>
+        <p style="font-size: 1.5rem; margin-top: 20px; font-weight: bold;">Shaded Area = A'</p>
+    </div>
+
+    <div class="section-container">
+        <h2 class="sub-heading">Real World Applications 🌍</h2>
+        <div class="grid-container">
+            <div class="app-card" style="background: linear-gradient(180deg, #3f3f46, #27272a);">
+                <h3>Binary Logic</h3>
+                <div class="icon">💻</div>
+                <p>In digital electronics, the NOT gate calculates the complement of a signal. If the 'Universal Set' of bits is {0, 1}, the complement of an input signal switches it to its opposite state. This fundamental operation is the backbone of all computer processing and memory storage logic.</p>
+            </div>
+            <div class="app-card" style="background: linear-gradient(180deg, #166534, #14532d);">
+                <h3>Quality Control</h3>
+                <div class="icon">☂️</div>
+                <p>Manufacturers use complement sets to track failure rates. If the Universal Set is "Total Units Produced" and Set A is "Defective Units," then A' represents the yield of high-quality products. Engineers focus on maximizing the complement to ensure factory efficiency and brand reliability.</p>
+            </div>
+            <div class="app-card" style="background: linear-gradient(180deg, #854d0e, #713f12);">
+                <h3>Digital Privacy</h3>
+                <div class="icon">🎯</div>
+                <p>Cybersecurity systems use complement logic for "Exclusion Lists." When a firewall blocks a set of known malicious IPs (Set A), it implicitly allows the complement (A') of all other traffic. This ensures that the internet remains usable for safe users while strictly filtering out the known threats.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="section-container fun-box">
+        <h2 class="sub-heading" style="color: #fb7185;">LET'S HAVE FUN 🎮</h2>
+        <div class="input-stack">
+            <div class="input-group">
+                <label>Enter Universal Set (U):</label>
+                <input type="text" id="univSet" placeholder="e.g. 1, 2, 3, 4, 5, 6">
+            </div>
+            <div class="input-group">
+                <label>Enter Set A:</label>
+                <input type="text" id="setA" placeholder="e.g. 1, 2, 3">
+            </div>
+            <button class="calc-btn" onclick="runComplement()">⚡ Find Complement A' ⚡</button>
+        </div>
+        
+        <div id="resBox" class="result-panel">
+            <h3 style="color:#fb7185; font-size: 2.5rem; margin-bottom: 20px;">Result:</h3>
+            <p id="out" style="font-size:4rem; font-weight:900;"></p>
+        </div>
+    </div>
+
+    <a href="/set-operations" class="back-capsule"><span>↩</span> Back to Set Operations</a>
+
+    <script>
+        function runComplement() {
+            let u = document.getElementById('univSet').value.split(',').map(x => x.trim()).filter(x => x);
+            let a = document.getElementById('setA').value.split(',').map(x => x.trim()).filter(x => x);
+            
+            // Perform complement: elements in U but not in A
+            let comp = u.filter(x => !a.includes(x));
+            
+            // Display result
+            let resultText = comp.length > 0 ? `{ ${[...new Set(comp)].join(', ')} }` : "{ Ø } (Empty Set)";
+            document.getElementById('out').innerText = resultText;
+            
+            document.getElementById('resBox').style.display = 'block';
+            document.getElementById('resBox').scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
+    </script>
+</body>
+</html>

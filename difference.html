@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Set Operations - Difference ➖</title>
+    <style>
+        @keyframes glow { 0% { text-shadow: 0 0 10px #fff; } 100% { text-shadow: 0 0 30px #f97316, 0 0 60px #f97316; } }
+        body { background-color: #043952; color: white; font-family: 'Segoe UI', sans-serif; margin: 0; padding: 0 20px 80px 20px; display: flex; flex-direction: column; align-items: center; }
+        
+        /* Header Section */
+        .header-container { display: flex; flex-direction: column; align-items: center; margin-top: 50px; margin-bottom: 40px; }
+        .main-header { font-size: 5rem; animation: glow 1.5s ease-in-out infinite alternate; margin: 0; font-weight: 900; letter-spacing: 5px; text-transform: uppercase; text-align: center; }
+        .symbol-box { font-size: 5rem; margin-top: 10px; filter: drop-shadow(0 0 15px rgba(249, 115, 22, 0.4)); }
+
+        .content-paragraph { max-width: 1150px; margin-bottom: 35px; text-align: justify; line-height: 2; color: #e2e8f0; font-size: 1.25rem; }
+        .section-container { width: 95%; max-width: 1200px; background: rgba(255, 255, 255, 0.05); border: 4px solid #f97316; border-radius: 50px; padding: 70px 50px; margin-top: 60px; box-shadow: 0 25px 60px rgba(0,0,0,0.7); text-align: center; backdrop-filter: blur(15px); }
+        .sub-heading { font-size: 4rem; margin-bottom: 50px; color: #f97316; font-weight: 800; text-transform: uppercase; }
+        
+        /* Venn Diagram - Left Shaded Only */
+        .venn-wrapper { display: flex; justify-content: center; align-items: center; height: 400px; position: relative; margin-bottom: 20px; }
+        .circle { width: 300px; height: 300px; border-radius: 50%; border: 4px solid white; position: absolute; }
+        .circle.a { transform: translateX(-90px); background: rgba(249, 115, 22, 0.6); z-index: 1; }
+        .circle.b { transform: translateX(90px); background: #043952; z-index: 2; border: 4px solid white; }
+        .venn-label { position: absolute; z-index: 10; font-weight: 900; font-size: 2.5rem; }
+
+        /* Application Cards - Capsule Style */
+        .grid-container { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; margin-top: 50px; }
+        .app-card { padding: 60px 30px; border-radius: 40px; min-height: 600px; display: flex; flex-direction: column; align-items: center; text-align: center; border: 1px solid rgba(255,255,255,0.1); transition: 0.4s ease; }
+        .app-card:hover { transform: translateY(-20px); border-color: white; box-shadow: 0 30px 60px rgba(0,0,0,0.5); }
+        .app-card h3 { font-size: 2.4rem; margin-bottom: 20px; font-weight: 800; }
+        .app-card .icon { font-size: 3rem; margin-bottom: 20px; }
+        .app-card p { font-size: 1.15rem; line-height: 1.8; color: rgba(255,255,255,0.9); }
+        
+        /* Centered Input Section */
+        .fun-box { border: 6px solid #fbbf24; background: rgba(251, 191, 36, 0.05); }
+        .input-stack { display: flex; flex-direction: column; align-items: center; gap: 30px; width: 100%; }
+        .input-group { display: flex; flex-direction: column; align-items: center; width: 100%; }
+        .input-group label { font-size: 2.2rem; font-weight: 900; color: #fbbf24; margin-bottom: 15px; }
+        
+        input { background: #021a26; border: 4px solid #fbbf24; border-radius: 30px; padding: 25px; color: white; font-size: 1.8rem; width: 600px; text-align: center; outline: none; transition: 0.3s; }
+        input:focus { box-shadow: 0 0 20px #fbbf24; }
+
+        .calc-btn { background: #fbbf24; color: #043952; padding: 30px 100px; font-size: 2.5rem; font-weight: 900; border-radius: 100px; cursor: pointer; border: none; transition: 0.3s; margin-top: 20px; }
+        .calc-btn:hover { transform: scale(1.05); box-shadow: 0 0 30px #fbbf24; }
+
+        .result-panel { margin-top: 50px; padding: 50px; background: #021a26; border: 5px solid #f97316; border-radius: 40px; display: none; width: 80%; }
+        .back-capsule { background-color: #ff0000 !important; padding: 20px 60px; border-radius: 100px; text-decoration: none; color: white !important; font-weight: 900; font-size: 1.6rem; margin-top: 100px; border: 3px solid white; display: flex; gap: 20px; }
+    </style>
+</head>
+<body>
+    <div class="header-container">
+        <h1 class="main-header">SET DIFFERENCE</h1>
+        <div class="symbol-box">➖</div>
+    </div>
+
+    <div class="content-paragraph">
+        The Set Difference operator, often represented as A - B, is a cornerstone of set theory that identifies elements residing exclusively in one collection while strictly omitting those present in another. Mathematically, the difference between Set A and Set B comprises all elements that are members of A but are notably absent from B, acting as a logical filter that isolates the distinct identity of the primary set. Within the field of discrete mathematics, this operation serves as a relative complement, providing a formal mechanism for stripping away shared traits and focusing on unique attributes within a given system. This process is essential for simplifying logical expressions and creating exclusionary rules in mathematical proofs where precise membership is required for system validity. Beyond academic utility, set difference allows logicians to define the boundaries of a system by determining what remains once specific variables or overlapping conditions are removed from consideration. It is the mathematical embodiment of "purity," ensuring that the resulting set contains only elements that have passed a rigorous exclusion test against the secondary collection. In formal logic, this corresponds to the conjunction of a statement and its negation, specifically p AND NOT q, illustrating how complex constraints intersect to yield a unique output. By highlighting only the non-shared components of a dataset, the difference operator facilitates the development of specialized models in algebra, group theory, and computer science.
+    </div>
+
+    <div class="content-paragraph">
+        In practical computer science, the set difference operation is vital for maintaining data synchronization and identifying critical updates within large-scale distributed databases. It drives the logic of anti-join operations, allowing engineers to pinpoint records in a primary table that lack a corresponding entry in a secondary table, which is a key step in data auditing. From the core of version control systems where "diffing" utilities isolate specific changes in source code to security architectures that filter traffic by subtracting whitelisted signatures, this operator is ubiquitous. In high-level software engineering, it enables features like "unread message" counts by subtracting the set of "read message IDs" from "total message IDs," ensuring a seamless user experience. Furthermore, it is a primary tool for recommendation engines that must exclude items already in a user’s purchase history from their personalized suggestion lists to improve marketing efficiency. In data cleaning and preprocessing, set difference helps identify anomalies or orphaned records that no longer align with the master dataset’s updated criteria. The power of this gate lies in its ability to provide instantaneous insights into changes and exceptions, making it indispensable for real-time monitoring and reporting systems. By requiring an element to be unique to the first input set, the difference operator provides a binary clarity essential for the execution of automated decision algorithms. Ultimately, the set difference gate serves as a precision subtractor in the modern era, refining messy, overlapping data into clear, actionable information through the fundamental principle of logical exclusion.
+    </div>
+
+    <div class="section-container">
+        <h2 class="sub-heading">Venn Diagram 📊</h2>
+        <div class="venn-wrapper">
+            <div class="circle a"></div>
+            <div class="circle b"></div>
+            <span class="venn-label">A - B</span>
+        </div>
+    </div>
+
+    <div class="section-container">
+        <h2 class="sub-heading">Real World Applications 🌍</h2>
+        <div class="grid-container">
+            <div class="app-card" style="background: linear-gradient(180deg, #1e40af, #1e3a8a);">
+                <h3>Inventory Control</h3>
+                <div class="icon">📦</div>
+                <p>Retailers use set difference to manage stock efficiently. By taking Set A (Total Stock Ordered) and subtracting Set B (Stock Sold), they isolate exactly what remains in the warehouse. This "Inventory - Sales" logic ensures they don't over-order items that are already sitting on shelves.</p>
+            </div>
+            <div class="app-card" style="background: linear-gradient(180deg, #9f1239, #881337);">
+                <h3>Marketing Leads</h3>
+                <div class="icon">📱</div>
+                <p>Companies use difference logic to avoid annoying customers. If Set A is "All Potential Leads" and Set B is "Existing Customers," the company targets (A - B). This ensures that marketing budgets are spent only on people who haven't signed up yet, preventing redundant ads to current users.</p>
+            </div>
+            <div class="app-card" style="background: linear-gradient(180deg, #115e59, #134e4a);">
+                <h3>Email Filtering</h3>
+                <div class="icon">📧</div>
+                <p>Spam filters often operate on difference sets. If Set A is "Incoming Emails" and Set B is "Whitelisted Contacts," the filter focuses its heavy security checks on (A - B). By subtracting known safe senders, the system can dedicate more processing power to analyzing unknown and potentially dangerous traffic.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="section-container fun-box">
+        <h2 class="sub-heading" style="color: #fbbf24;">LET'S HAVE FUN 🎮</h2>
+        <div class="input-stack">
+            <div class="input-group">
+                <label>Enter Set A:</label>
+                <input type="text" id="setA" placeholder="e.g. 1, 2, 3, 4">
+            </div>
+            <div class="input-group">
+                <label>Enter Set B:</label>
+                <input type="text" id="setB" placeholder="e.g. 3, 4, 5">
+            </div>
+            <button class="calc-btn" onclick="runDifference()">⚡ Calculate A - B ⚡</button>
+        </div>
+        
+        <div id="resBox" class="result-panel">
+            <h3 style="color:#fbbf24; font-size: 2.5rem; margin-bottom: 20px;">Result:</h3>
+            <p id="out" style="font-size:4rem; font-weight:900;"></p>
+        </div>
+    </div>
+
+    <a href="/set-operations" class="back-capsule"><span>↩</span> Back to Set Operations</a>
+
+    <script>
+        function runDifference() {
+            let a = document.getElementById('setA').value.split(',').map(x => x.trim()).filter(x => x);
+            let b = document.getElementById('setB').value.split(',').map(x => x.trim()).filter(x => x);
+            
+            // Perform difference: elements in A not in B
+            let diff = a.filter(x => !b.includes(x));
+            
+            // Display result
+            let resultText = diff.length > 0 ? `{ ${[...new Set(diff)].join(', ')} }` : "{ Ø } (Empty Set)";
+            document.getElementById('out').innerText = resultText;
+            
+            document.getElementById('resBox').style.display = 'block';
+            document.getElementById('resBox').scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
+    </script>
+</body>
+</html>

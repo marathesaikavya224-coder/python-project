@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Discrete Math Toolkit | Cinematic Edition</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <header class="fade-in">
+            <h1 class="main-title">Discrete Mathematics Interactive Toolkit</h1>
+            
+            <p class="intro-text">
+                The Discrete Mathematics Interactive Toolkit is a comprehensive digital environment meticulously engineered to bridge the gap between abstract mathematical theory and practical computational application. In the modern era of software engineering, understanding the discrete structures that govern logic and data is no longer optional; it is the fundamental bedrock upon which all complex systems are built. This toolkit serves as a dynamic laboratory where students, educators, and developers can manipulate variables, visualize outcomes, and gain an intuitive grasp of the finite structures that define our digital reality. By integrating real-time simulation with rigorous mathematical logic, we provide a hands-on approach to topics that are often perceived as intimidatingly theoretical.
+            </p>
+            <p class="intro-text">
+                Our mission is to democratize the mastery of discrete structures by providing high-fidelity visualizers for logic gates, set operations, and relational algebra. Every interactive module within this platform is designed to reinforce the "learning by doing" philosophy, allowing users to experiment with truth tables, explore Venn diagrams, and test properties of relations with instant feedback. As you navigate through this toolkit, you will find that the complexity of discrete mathematics becomes a playground for intellectual curiosity, fostering a deeper understanding of how bits and bytes are organized. Whether you are preparing for a competitive examination or architecting a new database, this toolkit provides the clarity, precision, and interactive depth necessary to master the language of the computer science world.
+            </p>
+        </header>
+
+        <div class="grid-layout fade-in">
+            <div class="card">
+                <h3>Interactive Simulator 🕹️</h3>
+                <p>Engage with live logic engines that respond to your inputs instantly, allowing for real-time verification of complex mathematical hypotheses.</p>
+            </div>
+            <div class="card">
+                <h3>Educational Purpose 🎓</h3>
+                <p>Simplify complex university-level theories into digestible, visual steps that make learning intuitive, fast, and remarkably engaging.</p>
+            </div>
+            <div class="card">
+                <h3>Mathematics Preparation 📝</h3>
+                <p>The perfect companion for acing examinations and building competitive coding logic by mastering the core patterns of discrete structures.</p>
+            </div>
+        </div>
+
+        <div class="highlight-box fade-in">
+            <h2>Why Discrete Mathematics? 🤔</h2>
+            <p>
+                Discrete mathematics is the definitive language of the digital age, standing in stark contrast to the continuous mathematics of calculus that describes the physical, analog world. While traditional engineering focuses on smooth curves and infinite change, computer science operates in a world of distinct, finite steps—the world of 0s and 1s, true and false, and nodes and edges. Understanding discrete mathematics is akin to learning the "source code" of logical thought; it provides the essential framework for algorithm design, complexity analysis, and data structuring. Without these principles, the modern internet, secure banking, and complex logistics would simply cease to exist, as every digital process relies on the finite structures of discrete logic.
+            </p>
+            <p>
+                Beyond its technical necessity, discrete mathematics cultivates a unique form of rigorous analytical thinking that is invaluable in any problem-solving domain. It teaches the art of combinatorial thinking, formal proofing, and recursive logic, allowing one to break down massive, multi-faceted problems into manageable, discrete units that can be solved with mathematical certainty. By mastering this field, you develop the ability to optimize code for performance, ensure the security of encrypted data, and model the intricate relationships within social networks or biological systems. Ultimately, discrete math is the bridge between human creativity and machine execution, offering the intellectual tools required to innovate within the rapidly evolving landscape of artificial intelligence and quantum computing.
+            </p>
+        </div>
+
+        <h2 class="section-title">Applications of Discrete Mathematics 🚀</h2>
+        <div class="grid-layout fade-in">
+            <div class="card">
+                <h3>Cryptography 🔒</h3>
+                <p>Uses prime number theory and modular arithmetic to secure global data transmissions.<br>It ensures that your private messages and financial transactions remain unreadable to hackers.</p>
+            </div>
+            <div class="card">
+                <h3>Network Routing 🌐</h3>
+                <p>Employs Graph Theory to find the most efficient paths for data packets across the internet.<br>It minimizes latency and prevents congestion in the massive, interconnected global web.</p>
+            </div>
+            <div class="card">
+                <h3>Database Logic 💾</h3>
+                <p>Relational algebra and set theory form the core of SQL and modern data management systems.<br>These principles allow for the fast retrieval and organized storage of billions of data points.</p>
+            </div>
+            <div class="card">
+                <h3>Artificial Intelligence 🤖</h3>
+                <p>Probability and formal logic are used to build neural networks and decision-making systems.<br>It allows machines to "learn" patterns and make logical predictions based on discrete inputs.</p>
+            </div>
+            <div class="card">
+                <h3>Circuit Design ⚡</h3>
+                <p>Boolean algebra is used to simplify the logic gates that make up physical computer hardware.<br>This optimization allows processors to be faster, smaller, and significantly more energy-efficient.</p>
+            </div>
+            <div class="card">
+                <h3>Scheduling Algorithms 📅</h3>
+                <p>Combinatorics and optimization help solve complex problems like airline crew or project scheduling.<br>It ensures that resources are allocated perfectly without any overlaps or logical conflicts.</p>
+            </div>
+        </div>
+
+       <h2 class="section-title">Explore the Concepts 🧠</h2>
+
+<div class="grid-layout fade-in" style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 20px;">
+    
+    <a href="{{ url_for('truth') }}" class="concept-card" style="text-decoration: none;">
+        <div class="card concept-hover">
+            <h3>Truth Table 🧠</h3>
+            <p>Master logical operators, tautologies, and boolean outputs through our interactive generator.</p>
+        </div>
+    </a>
+
+    <a href="{{ url_for('set_operations') }}" class="concept-card" style="text-decoration: none;">
+        <div class="card concept-hover">
+            <div class="card-icon">📊</div>
+            <h3>Set Theory</h3>
+            <p>Explore Union, Intersection, and Venn Diagram logic with our interactive tools.</p>
+        </div>
+    </a>
+
+    <a href="{{ url_for('relations') }}" class="concept-card" style="text-decoration: none;">
+        <div class="card concept-hover">
+            <h3>Relations 🔗</h3>
+            <p>Deep dive into Reflexive, Symmetric, and Transitive properties of mathematical relations.</p>
+        </div>
+    </a>
+
+</div>
+    </div>
+</body>
+</html>
