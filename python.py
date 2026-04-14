@@ -34,7 +34,7 @@ def detect_truth(statement):
     if detected_base_truth is None: detected_base_truth = False
     return not detected_base_truth if is_negated else detected_base_truth
 
-# --- 1. MAIN HUBS ---
+# --- ROUTES ---
 @app.route('/')
 def index(): return render_template('index.html')
 
@@ -47,7 +47,6 @@ def relations(): return render_template('relations.html')
 @app.route('/set-operations')
 def set_operations(): return render_template('set_operations.html')
 
-# --- 2. TRUTH TABLE LOGIC ---
 def handle_gate(logic_type, template_name):
     if request.method == 'POST':
         data = request.json
@@ -76,24 +75,18 @@ def not_gate():
         return jsonify({'result': not valA})
     return render_template('not_gate.html')
 
-# --- 3. UPDATED MISSING ROUTES (Syncing with your _gate.html files) ---
-
 @app.route('/xor', methods=['GET', 'POST'])
 @app.route('/xor-gate', methods=['GET', 'POST'])
-def xor_gate(): 
-    return handle_gate('xor', 'xor_gate.html')
+def xor_gate(): return handle_gate('xor', 'xor_gate.html')
 
 @app.route('/implication', methods=['GET', 'POST'])
 @app.route('/implication-gate', methods=['GET', 'POST'])
-def implication_gate(): 
-    return handle_gate('implication', 'implication_gate.html')
+def implication_gate(): return handle_gate('implication', 'implication_gate.html')
 
 @app.route('/biconditional', methods=['GET', 'POST'])
 @app.route('/biconditional-gate', methods=['GET', 'POST'])
-def biconditional_gate(): 
-    return handle_gate('biconditional', 'biconditional_gate.html')
+def biconditional_gate(): return handle_gate('biconditional', 'biconditional_gate.html')
 
-# --- 4. SET OPERATIONS ROUTES ---
 @app.route('/union')
 def view_union(): return render_template('union.html')
 
@@ -109,7 +102,6 @@ def view_symmetric_difference(): return render_template('symmetric-difference.ht
 @app.route('/complement')
 def view_complement(): return render_template('complement.html')
 
-# --- 5. RELATIONS DICTIONARY ROUTES ---
 @app.route('/reflexive-relation')
 def view_reflexive(): return render_template('reflexive.html')
 
@@ -147,13 +139,7 @@ def view_equivalence(): return render_template('equivalence.html')
 @app.route('/partial_order')
 def view_partial_order(): return render_template('partial_order.html')
 
-
-# --- 6. SERVER START ---
-# --- 6. SERVER START ---
-# This version works for both Render and Vercel
+# Vercel looks for the object named 'app'
+# This satisfies both local running and Vercel's handler
 if __name__ == "__main__":
-    port = int(os.environ.get('PORT', 5000))
-    app.run(host='0.0.0.0', port=port)
-
-# Vercel specifically needs this line to find the 'app' object
-app = app
+    app.run(host='0.0.0.0', port=int(os.environ.get('PORT', 5000)))
