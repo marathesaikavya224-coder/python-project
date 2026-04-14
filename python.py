@@ -152,4 +152,4 @@ def view_partial_order(): return render_template('partial_order.html')
 if __name__ == '__main__':
     # Render needs to pick the port itself, this code allows that
     port = int(os.environ.get('PORT', 5000))
-    app.run(host='0.0.0.0', port=port)
+   # app.run(host='0.0.0.0', port=port)
